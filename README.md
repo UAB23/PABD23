@@ -2,3 +2,4 @@
 Cucu Ciprian
 Pavel Cristiana-Maria
 Bibicu Dorin
+Stan Marias

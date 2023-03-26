@@ -12,6 +12,6 @@ class CrisDrimbController extends AbstractController
     public function main(): Response
     {
 
-        return $this->render('cristina_drimbarean/crisd.html.twig');
+        return $this->render('crisd.html.twig');
     }
 }

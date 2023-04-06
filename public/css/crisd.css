@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(238, 203, 182);
+}
+  
+h1 {
+    color: navy;
+    margin-left: 20%;
+}
+p {
+  color: rgb(0, 128, 107);
+  margin-left: 20%;
+}
+ul {
+  color: rgb(0, 0, 0);
+  margin-left: 20%;
+}
+.img{
+  width: 50%;
+  height: auto;
+  padding-left: 20px;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 100px;
+  text-align: right;
+  font-size: 25px;
+  cursor: pointer;
+  color: white;
+}
+.container{
+  align-self: center;
+  align-content: center;
+  width: 80%;
+  height: 80%;
+}

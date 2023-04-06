@@ -4,3 +4,7 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+cristina_drimbarean:
+    path: /crisdrimb
+    controller: App\Controller\CrisDrimbController::main
+    methods: GET

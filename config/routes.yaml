@@ -4,7 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-<<<<<<< HEAD
 Bibicu_Dorin:
     path: /BibicuDorin
     controller: App\Controller\BibicuDorinController::index
@@ -23,9 +22,8 @@ activitateaDidactica:
 contact:
     path: /contact
     controller: App\Controller\BibicuDorinController::contact
-=======
+
 cristina_drimbarean:
     path: /crisdrimb
     controller: App\Controller\CrisDrimbController::main
     methods: GET
->>>>>>> 949c7fe10f7ca1905fdcb4fe69e1a27bf5c2b389

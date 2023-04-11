@@ -1,0 +1,303 @@
+img {
+	border: none;
+	outline: none;
+}
+body {
+	background: url(/BibicuDorin/img/fundal.jpg) #ffffff;
+	font: 70% verdana,tahoma,arial,sans-serif;
+	padding: 0;
+	margin: 0 auto;
+}
+#wrap {
+	margin: 0 auto;
+	width: 760px;
+	color: #303030;
+}
+#logo {
+	text-align: left;
+	border: 0; margin: 0; padding: 0;
+	vertical-align: middle;
+}
+#logo a img {
+	width: 100px;
+}
+#poza img{
+	width: 106px;
+	height: 114px;
+}
+#header {
+	clear: both;
+	padding: 0;
+	margin: 10px 0 0;
+	width: 100%;
+	vertical-align: middle;
+}
+#header h1 {
+	font-size: 1.6em;
+	float: right;
+	margin: 0 0 10px;
+	width: 500px;
+	text-align: center;
+}
+#header h3 {
+	font-size: 1.1em;
+	float: right;
+	margin: 0 0 12px;
+	width: 500px;
+	color: #a0a0a0;
+	line-height: 1.4em;
+	text-align: center;
+}
+#header p {
+	font-size: 1.1em;
+	float: right;
+	margin: 0 0 5px;
+	width: 500px;
+	color: #a0a0a0;
+	line-height: 1.4em;
+	text-align: center;
+}
+#frontphoto {
+	border-width: 0;
+	padding: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+#avmenu {
+	clear: left;
+	font-size: 0.9em;
+	float: left;
+	padding: 0;
+	margin: 0 0 10px;
+	width: 150px;
+}
+#avmenu ul {
+	font-size: 1em;
+	padding: 0;
+	margin: 0 0 20px;
+	width: 150px;
+	list-style-type: none;
+}
+#avmenu li {
+	margin-bottom: 4px;
+}
+#avmenu li a {
+	display: block;
+	padding-left: 10px;
+	padding-right: 0;
+	padding-top: 6px;
+	padding-bottom: 0;
+	font-weight: bold;
+	background-color: #f4f4f4;
+	border-left: #cccccc 4px solid;
+	color: #505050;
+	height: 20px;
+	text-decoration: none;
+}
+#avmenu li a:hover {
+	background-color: #eaeaea;
+	border-left: #286ea0 4px solid;
+	color: #286ea0;
+}
+.announcel {
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	margin: 10px 0;
+	width: 130px;
+	color: #505050;
+	line-height: 1.3em;
+	background-color: #f4f4f4;
+}
+.announce {
+	padding-right: 5px;
+	padding-left: 7px;
+	padding-bottom: 7px;
+	padding-top: 7px;
+	margin: 7px 0;
+	width: 190px;
+	color: #505050;
+	line-height: 1.3em;
+	background-color: #f4f4f4;
+}
+.announcelung {
+	padding-left: 7px;
+	padding-right: 5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin: 7px 0;
+	width: 450px;
+	color: #505050;
+	line-height: 1.3em;
+	background-color: #f4f4f4;
+}
+#extras {
+	font-size: 0.9em;
+	float: right;
+	padding: 0;
+	margin: 0 0 10px;
+	width: 100px;
+	line-height: 1.5em;
+}
+#extras p {
+	margin: 0 0 1.5em;
+}
+#content {
+	border-right: #f0f0f0 1px solid;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 0;
+	margin-right: 110px;
+	margin-bottom: 20px;
+	margin-left: 160px;
+	border-left: #f0f0f0 1px solid;
+	line-height: 1.2em;
+	text-align: left;
+}
+#content h2 {
+	font-size: 1.5em;
+	margin: 0 0 0.5em;
+}
+#content #changed {
+	color: #ff0000;
+}
+#content img {
+	border-right: #f0f0f0 4px solid;
+	padding-right: 1px;
+	border-top: #f0f0f0 4px solid;
+	display: inline;
+	padding-left: 1px;
+	background-color: #cccccc;
+	padding-bottom: 1px;
+	border-left: #f0f0f0 4px solid;
+	padding-top: 1px;
+	border-bottom: #f0f0f0 4px solid;
+}
+h3 {
+	font-size: 1.3em;
+	margin: 0 0 10px;
+}
+a {
+	color: #286ea0;
+	text-decoration: none;
+}
+a:hover {
+	color: #286ea0;
+	text-decoration: underline;
+}
+a img {
+	border-top-width: 0;
+	border-left-width: 0;
+	border-bottom-width: 0;
+	border-right-width: 0;
+}
+#footer {
+	clear: both;
+	border-top: #f0f0f0 4px solid;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	font-size: 0.9em;
+	margin: 0 auto;
+	width: 760px;
+	color: #808080;
+	text-align: center;
+}
+
+
+#footer a {
+	color: #808080;
+	text-decoration: none;
+}
+#footer a:hover {
+	text-decoration: underline;
+}
+.left {
+	float: left;
+	margin: 10px 10px 5px 0;
+}
+.right {
+	float: right;
+	margin: 10px 0 5px 10px;
+}
+.textright {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+.small {
+	font-size: 0.8em;
+}
+.bold {
+	font-weight: bold;
+}
+.hide {
+	display: none;
+}
+#contact td {
+	text-align: left;
+	vertical-align: middle;
+}
+#contact img.icon {
+	border:0px;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+}
+
+/*Animations*/
+
+@keyframes showUpBottom {
+    from {
+        opacity: 0;
+        margin-top: 100px;
+    }
+    to {
+        opacity: 1;
+        margin-top: initial;
+    }
+}
+
+
+@keyframes showUpTop {
+    from {
+        opacity: 0;
+        margin-top: -100px;
+    }
+    to {
+        opacity: 1;
+        margin-top: initial;
+    }
+}
+
+
+.showUpBottom{
+    animation-name: showUpBottom;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+}
+
+.showUpTop{
+    animation-name: showUpTop;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    
+}
+
+img.img-enlarge-hover{
+    transition: all .3s;
+}
+
+img.img-enlarge-hover:hover{
+    transition: all .3s;
+    width: 100% !important;
+    height: 50% !important;
+}
+

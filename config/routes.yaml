@@ -3,3 +3,22 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+Bibicu_Dorin:
+    path: /BibicuDorin
+    controller: App\Controller\BibicuDorinController::index
+biografie:
+    path: /biografie
+    controller: App\Controller\BibicuDorinController::biografie
+home:
+    path: /home
+    controller: App\Controller\BibicuDorinController::home
+activitateaStiintifica:
+    path: /activitateaStiintifica
+    controller: App\Controller\BibicuDorinController::activitateaStiintifica
+activitateaDidactica:
+    path: /activitateaDidactica
+    controller: App\Controller\BibicuDorinController::activitateaDidactica
+contact:
+    path: /contact
+    controller: App\Controller\BibicuDorinController::contact

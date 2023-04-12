@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Galerie - Cristiana-Maria Pavel</title>
+    <link type = "text/css" rel="stylesheet" href="css/cristiana-maria-pavel/galerie.css">
+    <script src="js/cristiana-maria-pavel/galerie.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Images used to open the lightbox -->
+    {% block Imgs %}
+      {% for imagine in imagini %}
+        {% if loop.index % 3 == 0 %}
+        <div class="row">
+        {% endif %}
+          <div class="column">
+            <img src="{{imagine.nume}}" alt={{imagine.descriere}} width = "300" height = "300" onclick="openModal();currentSlide({{loop.index}})" class="hover-shadow">
+          </div>
+        {% if loop.index % 3 == 0 %}
+        </div>
+        {% endif %}
+      {% endfor %}
+    {% endblock %}
+
+    <!-- The Modal/Lightbox -->
+    <div id="myModal" class="modal">
+      <span class="close cursor" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+      {% block Lightbox %}
+        {% for imagine in imagini %}
+        <div class="mySlides">
+          <div class="numbertext">{{loop.index}} / {{imagini|length}} </div>
+          <img src="{{imagine.nume}}" alt={{imagine.descriere}} width = "300" height = "300">
+        </div>
+        {% endfor %}
+      {% endblock %}
+
+        <!-- Next/previous controls -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      </div>
+    </div>
+  </body>
+
+</html>

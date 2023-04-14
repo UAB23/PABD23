@@ -4,9 +4,15 @@ controllers:
         namespace: App\Controller
     type: attribute
 
+cristina_drimbarean:
+    path: /crisdrimb
+    controller: App\Controller\CrisDrimbController::main
+    methods: GET
+
 Bibicu_Dorin:
     path: /BibicuDorin
     controller: App\Controller\BibicuDorinController::index
+
 Bibicu_Dorin_biografie:
     path: /BibicuDorin/biografie
     controller: App\Controller\BibicuDorinController::Bibicu_Dorin_biografie
@@ -22,13 +28,3 @@ Bibicu_Dorin_activitateaDidactica:
 Bibicu_Dorin_contact:
     path: /BibicuDorin/contact
     controller: App\Controller\BibicuDorinController::Bibicu_Dorin_contact
-
-movies:
-    path: /movies
-    controller: App\Controller\MoviesController::index
-    methods: GET
-
-cristina_drimbarean:
-    path: /crisdrimb
-    controller: App\Controller\CrisDrimbController::main
-    methods: GET

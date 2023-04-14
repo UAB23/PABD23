@@ -59,7 +59,7 @@ class BibicuDorinController extends AbstractController
     }
 
 #[Route('/home')]
-public function home(): Response
+public function Bibicu_Dorin_home(): Response
     {
         return $this->render('bibicu_dorin/index.html.twig', [
             'studentName' =>'Bibicu Dorin',
@@ -75,7 +75,7 @@ public function home(): Response
     }
 
 #[Route('/biografie')]
-public function biografie(): Response
+public function Bibicu_Dorin_biografie(): Response
     {
         return $this->render('bibicu_dorin/biografie.html.twig', [
             'studentName' =>'Bibicu Dorin',
@@ -92,7 +92,7 @@ public function biografie(): Response
 
 
 #[Route('/activitateaStiintifica')]
-public function activitateaStiintifica(): Response
+public function Bibicu_Dorin_activitateaStiintifica(): Response
     {
         return $this->render('bibicu_dorin/activitateaStiintifica.html.twig', [
             'studentName' =>'Bibicu Dorin',
@@ -108,7 +108,7 @@ public function activitateaStiintifica(): Response
     }
 
 #[Route('/activitateaDidactica')]
-public function activitateaDidactica(): Response
+public function Bibicu_Dorin_activitateaDidactica(): Response
     {
         return $this->render('bibicu_dorin/activitateaDidactica.html.twig', [
             'studentName' =>'Bibicu Dorin',
@@ -124,7 +124,7 @@ public function activitateaDidactica(): Response
     }
 
 #[Route('/contact')]
-public function contact(): Response
+public function Bibicu_Dorin_contact(): Response
     {
         return $this->render('bibicu_dorin/contact.html.twig', [
             'studentName' =>'Bibicu Dorin',

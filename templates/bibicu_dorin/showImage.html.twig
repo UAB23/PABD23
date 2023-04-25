@@ -1,0 +1,47 @@
+{% extends "/bibicu_dorin/base.html.twig" %}
+
+{% block body %}
+    <div class="sm:w-3/5 w-4/5 mx-auto">
+        <h1 class="pt-20 sm:text-5xl md:text-7xl text-4xl font-bold text-center">
+            {{ image.title }}
+        </h1>
+
+        <div class="py-10 text-center">
+            <div class="inline-block sm:pt-1">
+                <h2 class="font-bold">
+                    Created by: Dorin B.
+                </h2>
+
+                <p class="text-sm text-gray-600">
+                     {{ image.dataImagine }}
+                </p>
+            </div>
+        </div>
+
+        <img
+            src="{{asset(image.imagePath)}}"
+            class="rounded-xl w-full shadow-xl"
+            alt=""
+        />
+
+        <p class="text-xl py-6">
+            {{ image.description }}
+        </p>
+
+ {% if app.user %}
+  {% if app.user.roles[0] =='ROLE_ADMIN' %}
+        <a 
+            href="/BibicuDorin/images/edit/{{ image.id }}"
+            class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
+            Modifica imaginea
+        </a> 
+
+        <a 
+            href="/BibicuDorin/images/delete/{{ image.id }}"
+            class="bg-red-500 font-bold py-2 px-4 ml-6 rounded transition-all hover:bg-red-300">
+            Sterge imaginea
+        </a>
+  {% endif %}
+  {% endif %}
+    </div>
+{% endblock %}

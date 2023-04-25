@@ -1,0 +1,10 @@
+{% extends "/bibicu_dorin/base.html.twig" %}
+
+
+{% block body %}
+
+{% set c = "/BibicuDorin/pdf/" ~ material %}
+{% set d=asset(c) %}
+<embed src="{{d}}" width="100%" height="100%" type='application/pdf'>
+
+{% endblock %}

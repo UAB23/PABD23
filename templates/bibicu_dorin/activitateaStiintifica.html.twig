@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Content-Language" content="RO"/>
+<meta name="charset" content="UTF-8"/>
+<meta name="language" content="RO"/>
+<meta name="description" content="FIH"/>
+<link rel="stylesheet" type="text/css" href="/BibicuDorin/css/still.css"/>
+<script type="text/javascript" src="../personal.js"></script>
+
+<meta name="author" content="BD"/>
+<meta name="keywords" content="Bibicu D"/>
+<title>Bibicu Dorin</title>
+
+
+<style type="text/css">
+#content {margin-right: 0px;}
+</style>
+
+<style>   
+.wrapingimage  
+{  
+float: left;   
+margin: 30px 12px 3px 4px;   
+border: 2px solid blue;  
+}   
+.resizeimage  
+{  
+width: 100px;
+height: 100px;
+float: left;  
+margin: 20px 12px 3px 4px;   
+border: 2px solid blue;  
+}  
+</style>  
+
+</head>
+<body>
+<div id="wrap">
+<table width="100%" style="padding:0;margin:0">
+  <tr>
+    <td id="logo">
+    <img src="/BibicuDorin/img/siglaUgal.png" class="resizeimage" />
+    </td>
+    <td id="header">
+      <h1><a href="/loginDB">Dorin BIBICU</a></h1>
+      <h3>Lector universitar doctor</h3>
+      <p>Universitatea Dunărea de Jos din Galați</p>
+      <p>Facultatea de Economie și Administrarea Afacerilor</p>
+    </td>
+    <td id="poza">
+        <img src="/BibicuDorin/img/siglaFEAA.png" class="resizeimage" />
+    </td>
+  </tr>
+</table>
+
+
+
+<br><br>
+<div id="avmenu">
+  <h2 class="hide">Menu:</h2>
+  <ul>
+    <li><a href="/BibicuDorin/index">Home</a></li>
+    <li><a href="/BibicuDorin/biografie">Biografie</a></li>
+    <li><a href="/BibicuDorin/activitateaDidactica">Activitate didactică</a></li>
+    <li><a href="/BibicuDorin/activitateaStiintifica">Activitate ştiinţifică</a></li>
+    <li><a href="/BibicuDorin/materiale">Materiale didactice</a></li>
+    <li><a href="/BibicuDorin/galerie">Galerie de imagini</a></li>
+    <li><a href="/BibicuDorin/contact">Contact</a></li>
+    <script type="text/javascript" src="/md/link.js?u=3"></script>
+  </ul>
+  <div class="announcel">
+    <h3>Links:</h3>
+    <p>- <a href="http://www.ugal.ro/">Universitatea Dunărea de Jos din Galați</a></p>
+    <p>- <a href="https://feaa.ugal.ro/">Facultatea de Economie și Administrarea Afacerilor</a></p>
+  </div>
+</div>
+
+
+<div id="content">
+  <div align="center">
+  <h2>Activitatea științifică</h2>
+   {% if app.user %}
+   {% if app.user.roles[0] =='ROLE_ADMIN' %}
+    <a 
+        href="/BibicuDorin/createActivitateStiintifica" 
+        class="uppercase border border-gray-500 text-lg py-4 px-6 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+        Adauga o activitate științifică
+    </a>
+    {% endif %}
+    {% endif %}
+</div>
+
+<div class="wrapingimage">   
+<img class="img-enlarge-hover" height="100" width="100" src="/BibicuDorin/img/dorin2.jpg">
+</div>
+
+<br><br><br>
+<div>
+<h3> <u>A. Teza de doctorat:</h3></u>
+{% for act in activitatiS %}
+{% if act.tip==1 %}
+{{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+</div>
+
+<br><br>
+<div>
+<h3> <u>B. Cărţi si capitole în cărţi publicate:</h3></u>
+<ol start="1" type="1">
+{% for act in activitatiS %}
+{% if act.tip==2 %}
+<li style="padding-left: 15px"> {{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+</ol>
+</div>
+
+<br>
+<div>
+<h3>  <u>C. Lucrari stiintifice publicate in volume cotate ISI:</h3></u>
+<div align="justify">
+<ol start="1" type="1">
+{% for act in activitatiS %}
+{% if act.tip==3 %}
+<li> {{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+</ol>
+</div>
+
+
+<br>
+<div>
+<h3>  <u>D. Lucrari stiintifice publicate in volume cotate BDI:</h3></u>
+<div align="justify">
+<ol start="1" type="1">
+{% for act in activitatiS %}
+{% if act.tip==4 %}
+<li> {{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+
+{% endif %}
+{% endfor %}
+</ol>
+</div>
+
+<br>
+<div>
+<h3> <u>E. Lucrări publicate în reviste şi  volume de conferinţe cu referenţi (neindexate):</h3></u>
+<div align="justify">
+<ol start="1" type="1">
+<li>Luminiţa Moraru, <b>Dorin Bibicu</b>, Segmentarea Imaginilor Digitale, Revista de Fizică Medicală, Vol 2, nr 1, Aprilie 2014, ISSN 2344-3944.</li>
+{% for act in activitatiS %}
+{% if act.tip==5 %}
+<li> {{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+</ol>
+</div>
+
+<br>
+<div>
+<h3> <u>F. Stagii și proiecte internaționale:</h3></u>
+<div align="justify">
+<ol start="1" type="1">
+{% for act in activitatiS %}
+{% if act.tip==6 %}
+<li> {{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+</ol>
+<p align="right">
+{% for act in activitatiS %}
+{% if act.tip==7 %}
+{{act.descriere}}  
+
+{% if app.user %}
+{% if app.user.roles[0] =='ROLE_ADMIN' %}
+<a href="/BibicuDorin/editActivitateStiintifica/{{ act.id }}">Editează
+</a>
+<a href="/BibicuDorin/deleteActivitateStiintifica/{{ act.id }}">Șterge
+</a>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+
+
+</p>
+</div>
+
+<div align="center">
+&ndash; 2023 B.D. &ndash; 
+</div>
+
+</div>
+</body>
+</html>
+

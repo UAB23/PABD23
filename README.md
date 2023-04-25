@@ -6,3 +6,4 @@ Bibicu Dorin
 Bartha Tiberiu
 Petras Octavian
 Barlea Otilia-Ionela
+Necula (Stan) Maria

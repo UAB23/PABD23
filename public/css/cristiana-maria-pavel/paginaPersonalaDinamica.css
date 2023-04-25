@@ -1,0 +1,66 @@
+body {background-color: pink;}
+
+#text {
+	text-align:center;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+img {
+	grid-column-start: 4;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+ul {
+	display: inline-block;
+	text-align: left;
+}
+.grid-container {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 50px;
+}
+
+textarea {
+  width: 870px;
+  height: 80px;
+}
+
+.btn {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #FF3396;
+  grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+#user {
+  grid-column-start: 1;
+	grid-column-end: 1;
+	grid-row-start: 2;
+	grid-row-end: 2;
+}
+
+#parola {
+  grid-column-start: 2;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: 2;
+}
+
+#mesaj {
+  grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 4;
+	grid-row-end: 5;
+}

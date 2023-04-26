@@ -10,6 +10,6 @@ class TiBaController extends AbstractController
     #[Route('/TiBa')]
     public function TiBaController()
     {
-        return $this->render('TiBa.html.twig');
+        return $this->render('bartha_tiberiu/TiBa.html.twig');
     }
 }

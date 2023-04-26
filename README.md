@@ -5,4 +5,5 @@ Drîmbărean Maria-Cristina
 Bibicu Dorin
 Bartha Tiberiu
 Petras Octavian
+Barlea Otilia-Ionela
 Necula (Stan) Maria

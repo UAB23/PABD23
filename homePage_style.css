@@ -1,0 +1,14 @@
+body{
+  background-color: #FFDFD8;
+
+  margin: 20px;
+    text-align: center;
+}
+p {
+    text-align: justify;
+    font-size: 25px;
+  }
+img{
+    float: left;
+    margin: 5px;
+}

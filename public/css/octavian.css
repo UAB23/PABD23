@@ -1,0 +1,26 @@
+body {background-color: blue;}
+
+#text {
+    font-size: x-large;
+	text-align:left;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+img {
+	grid-column-start: 4;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+ul {
+	display: inline-block;
+	text-align: left;
+    font-size: x-large;
+}
+.grid-container {
+  display: grid;
+  column-gap: 100px;
+  row-gap: 1000px;
+}

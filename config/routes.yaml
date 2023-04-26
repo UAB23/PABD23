@@ -8,3 +8,7 @@ cristina_drimbarean:
     path: /crisdrimb
     controller: App\Controller\CrisDrimbController::main
     methods: GET
+
+Bibicu_Dorin:
+    path: /BibicuDorin
+    controller: App\Controller\BibicuDorinController::index

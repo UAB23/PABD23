@@ -1,0 +1,420 @@
+/*Reset CSS*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*End reset CSS*/
+
+
+/*Custom css*/
+
+html, body{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:block;
+    overflow-y:auto;
+    overflow-x:hidden;
+    font-family: 'Open Sans';
+}
+
+body{
+    background: url('../img/da.jpg');
+    background-size: 100%;
+}
+
+
+img.img-enlarge-hover{
+    transition: all .3s;
+}
+
+img.img-enlarge-hover:hover{
+    transition: all .3s;
+    width: 200% !important;
+    margin-left:-50%;
+
+}
+
+.half-width{
+    width: 50%;
+}
+
+.third-width{
+    width:33.33%;
+}
+
+.container{
+    display:block;
+    box-sizing: border-box;
+    width:80%;
+    padding:1em;
+}
+
+.col{
+    display:inline-block;
+    margin-left:-4px;
+    height:100%;
+    position:relative;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 0.5em;
+}
+
+
+.h-center{
+    margin: 0 auto;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+
+.text-large{
+    font-size:3em;
+}
+
+.text-xl{
+    font-size: 5em;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.text-cursive{
+    font-family: 'Dancing Script';
+}
+
+.italic{
+    font-style: italic;
+
+}
+
+.text-medium{
+    font-size:1.2em;
+}
+
+.text-small{
+    font-size:0.6em;
+}
+
+.overflow-hidden{
+    overflow: hidden;
+}
+
+
+.p-1{
+    padding: 0.5em;
+}
+
+.p-2{
+    padding: 1em;
+}
+
+.p-3{
+    padding: 1.5em;
+}
+
+.p-4{
+    padding: 3em;
+}
+
+.p-5{
+    padding: 6em;
+}
+
+
+.pl-1{
+    padding-left: 0.5em;
+}
+
+.p-2{
+    padding-left: 1em;
+}
+
+.p-3{
+    padding-left: 1.5em;
+}
+
+.p-4{
+    padding-left: 3em;
+}
+
+.p-5{
+    padding-left: 6em;
+}
+
+
+.pr-1{
+    padding-right: 0.5em;
+}
+
+.pr-2{
+    padding-right: 1em;
+}
+
+.pr-3{
+    padding-right: 1.5em;
+}
+
+.pr-4{
+    padding-right: 3em;
+}
+
+.pr-5{
+    padding-right: 6em;
+}
+
+
+
+.pt-1{
+    padding-top: 0.5em;
+}
+
+.pt-2{
+    padding-top: 1em;
+}
+
+.pt-3{
+    padding-top: 1.5em;
+}
+
+.pt-4{
+    padding-top: 3em;
+}
+
+.pt-5{
+    padding-top: 6em;
+}
+
+
+.pb-1{
+    padding-bottom: 0.5em;
+}
+
+.pb-2{
+    padding-bottom: 1em;
+}
+
+.pb-3{
+    padding-bottom: 1.5em;
+}
+
+.pb-4{
+    padding-bottom: 3em;
+}
+
+.pb-5{
+    padding-bottom: 6em;
+}
+
+
+.pl-0{
+    padding-left: 0;
+}
+
+.pr-0{
+    padding-right: 0;
+}
+
+.pt-0{
+    padding-top: 0;
+}
+
+.pb-0{
+    padding-bottom: 0;
+}
+
+
+
+/*Animations*/
+
+@keyframes showUpBottom {
+    from {
+        opacity: 0;
+        margin-top: 100px;
+    }
+    to {
+        opacity: 1;
+        margin-top: initial;
+    }
+}
+
+
+@keyframes showUpTop {
+    from {
+        opacity: 0;
+        margin-top: -100px;
+    }
+    to {
+        opacity: 1;
+        margin-top: initial;
+    }
+}
+
+
+.showUpBottom{
+    animation-name: showUpBottom;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+}
+
+.showUpTop{
+    animation-name: showUpTop;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    
+}
+
+.invisible{
+    opacity: 0;
+}
+
+.card{
+    border-radius:1em;
+    overflow:hidden;
+    box-shadow: 0px 0px 5px #e0e0e0;
+    transition: box-shadow 1s;
+    transition-timing-function: ease;
+}
+
+.card:hover{
+    transition: box-shadow 1s;
+    transition-timing-function: ease;
+    box-shadow: 0px 0px 7px #a0a0a0;
+}
+
+.card-body{
+    background:white;
+    padding: 1.5em;
+    
+}
+
+p{
+    padding-bottom: 1em;
+    padding-top: 1em;
+    line-height: 1.6;
+}
+
+ul{
+    padding:5px;
+}
+
+ul li{
+    padding-bottom: 0.2em;
+    padding-top: 0.2em;
+    cursor: pointer;
+}
+
+ul.checkboxed li::before{
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: inline;
+    content: '\f00c';
+    font-size:0.7em;
+    padding:5px;    
+}
+
+
+ul.checkboxed li:hover::before{
+    color:rgb(80, 224, 13);
+}
+
+ul.text-enlarge-hover li{
+    transition: font-size .1s;
+    font-size: initial;
+}
+ul.text-enlarge-hover li:hover{
+    transition: font-size .1s;
+    font-size: 1.3em;
+}
+
+
+.text-warning{
+    color:rgb(231, 217, 10);
+}
+
+.text-danger{
+    color:rgb(240, 13, 13);
+}
+
+.text-success{
+    color:rgb(80, 224, 13);
+}
+
+.text-info {
+    color:rgb(27, 104, 192);
+}
+
+.text-light {
+    color:rgb(204, 204, 204)
+}
+
+.text-muted {
+    color:rgb(65, 65, 65)
+}
+
+.pill {
+    border-radius:1em;
+    padding:0.5em;
+    box-shadow: 0px 0px 3px #a0a0a0;
+    margin:0.2em;
+}
+
+mt-default{
+    margin-top:1em;
+}

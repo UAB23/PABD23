@@ -10,6 +10,8 @@ security:
                 class: App\Entity\UserCris
                 property: email
         # used to reload user from session & other features (e.g. switch_user)
+                class: App\Entity\UserDB
+                property: email
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -22,6 +24,11 @@ security:
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route
+            custom_authenticator: App\Security\LoginDBAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: indexBD
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -34,6 +41,12 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/BibicuDorin/createImage, roles: ROLE_ADMIN}
+        - { path: ^/BibicuDorin/images/delete/, roles: ROLE_ADMIN}
+        - { path: ^/BibicuDorin/images/edit/, roles: ROLE_ADMIN}
+        - { path: ^/profile, roles: ROLE_USER }
+
+
 
 when@test:
     security:

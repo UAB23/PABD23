@@ -12,3 +12,7 @@ cristina_drimbarean:
 Bibicu_Dorin:
     path: /BibicuDorin
     controller: App\Controller\BibicuDorinController::index
+
+MariaNeculaStan:
+    path: /MariaNeculaStan
+    controller: App\Controller\MariaNeculaStanController::index

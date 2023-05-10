@@ -1,0 +1,24 @@
+body {background-color: rgb(147, 228, 81);}
+
+#text {
+	text-align:left;
+	grid-column-start: 4;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+img {
+	grid-column-start: 4;
+	grid-column-end: 6;
+	grid-row-start: 4;
+	grid-row-end: 6;
+}
+ul {
+	display: inline-block;
+	text-align: left;
+}
+.grid-container {
+  display: grid;
+  column-gap: 50px;
+  row-gap: 50px;
+}

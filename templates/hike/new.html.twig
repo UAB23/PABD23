@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}New Hike{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Create Hike</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_hike_index') }}"> 
+                    View All Hikes
+                </a>
+            </div>
+            <div class="card-body">
+                 {{ include('hike/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

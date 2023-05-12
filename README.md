@@ -8,4 +8,5 @@ Bartha Tiberiu
 Petras Octavian
 Barlea Otilia-Ionela
 Necula (Stan) Maria
+Basim Hammad
 David Roxana-Maria

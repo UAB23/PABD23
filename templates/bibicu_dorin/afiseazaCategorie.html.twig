@@ -1,0 +1,95 @@
+{% extends "/bibicu_dorin/base.html.twig" %}
+
+
+{% block body %}
+
+
+<div class="w-4/5 m-auto pt-20">
+    <h1 class="text-6xl text-center pb-12">
+        Modifica o categorie
+    </h1>
+
+{# Categorie= {{ app.request.get("categorie") }} #}
+
+<br><br>
+<table class="stil">
+    <tr>
+        <th>Email utilizator</th>
+        <th>Categorie</th>
+        <th>Data propunere</th>
+        {% if app.user %}
+        {% if app.user.roles[0] =='ROLE_ADMIN' %}
+        <th>Aprobat</th>
+        <th>Aproba</th>
+        <th>Respinge</th>
+        {% endif %}
+        {% endif %}
+    </tr>
+
+    {% for act in activitatiS %}
+    
+      {% if app.user %}
+
+          {% if app.user.roles[0] =='ROLE_ADMIN' %}
+               <tr>
+                        <td>
+                            {% for act3 in activitatiS3 %}
+                                {% if (act3.getId()) == (act.getIdUser())  %} 
+                                {{act3.email}}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td> {{act.name}}</td>
+                        <td>{{act.timp|date('d-m-Y H:i:s')}}</td>
+                        <td><input type=text value={{act.approved}} disabled style="text-align: center;"></td>
+                        <!-- <td><input type=submit value=Modifica style="text-align: center;"></td> -->
+                        <td> <a href="/BibicuDorin/categorie/edit/{{act.id}}/1/{{userId}}"> Aproba </a></td>
+                        <td> <a href="/BibicuDorin/categorie/edit/{{act.id}}/2/{{userId}}"> Respinge </a></td>
+                </tr>   
+                    {% else %}
+                        {% if (act.getApproved()) == 1 %}  
+                            <tr>
+                                <td>
+                                    {% for act3 in activitatiS3 %}
+                                        {% if (act3.getId()) == (act.getIdUser())  %} 
+                                        {{act3.email}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td> {{act.name}}</td>
+                                <td>{{act.timp|date('d-m-Y H:i:s')}}</td>
+                            </tr>
+                        {% endif %}
+
+           {% endif %}
+
+           {% else %}
+                        {% if (act.getApproved()) == 1 %}  
+                            <tr>
+                                <td>
+                                    {% for act3 in activitatiS3 %}
+                                        {% if (act3.getId()) == (act.getIdUser())  %} 
+                                        {{act3.email}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td> {{act.name}}</td>
+                                <td>{{act.timp|date('d-m-Y H:i:s')}}</td>
+                            </tr>
+                        {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+
+<br><br>
+    {% if app.user %}
+    {% if app.user.roles[0] =='ROLE_ADMIN' or app.user.roles[0] =='ROLE_USER' %}
+        {% set userId = ( app.user.getId()) %}
+        <a href="/BibicuDorin/adaugaCategorie/1/1/{{userId}}" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+            Propune o categorie
+        </a>
+    {% endif %}
+    {% endif %}
+
+</div>
+{% endblock %}

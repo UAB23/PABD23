@@ -12,9 +12,25 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Form\ImagesDBFormType;
 use App\Form\ActivitateStiintificaDBFormType;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
+use App\Repository\PostForumDb1Repository;
+use App\Entity\PostForumDb1;
+use App\Form\PostForumDBFormType;
+
+use App\Repository\CategoriesForumDb2Repository;
+use App\Entity\CategoriesForumDb2;
+use App\Repository\UserDBRepository;
+use App\Form\CategoriesForumDB2FormType;
+
+use App\Entity\SubcategoriesForumDb2;
+use App\Form\SubcategoriesForumDB2FormType;
+use App\Repository\SubcategoriesForumDb2Repository;
+
 
 class BibicuDorinController extends AbstractController
 {
@@ -269,4 +285,329 @@ public function Bibicu_Dorin_contact(): Response
         ]);
     }
 
+    #[Route('/BibicuDorin/forum',name: 'forumBD')]
+    public function Bibicu_Dorin_forum(CategoriesForumDb2Repository $actSRepository,SubCategoriesForumDb2Repository $actSRepository1,PostForumDb1Repository $actSRepository2,UserDBRepository $actSRepository3): Response
+    {
+        //acts=Categorii actS1=subcategorii, actS2=post, actS3=user
+        $actS=$actSRepository->findAll();
+        $actS1=$actSRepository1->findAll();
+        $actS2=$actSRepository2->findAll();
+        $actS3=$actSRepository3->findAll();
+        //dd($actS);
+        //exit;
+
+        return $this->render('bibicu_dorin/forum.html.twig',['activitatiS'=>$actS,'activitatiS1'=>$actS1, 'activitatiS2'=>$actS2,'activitatiS3'=>$actS3]);
+    }
+
+    #[Route('/BibicuDorin/test',name: 'testBD')]
+    public function Bibicu_Dorin_test(): Response
+    {
+        return $this->render('bibicu_dorin/test.html.twig');
+    }
+
+    #[Route('/BibicuDorin/scriePost/{categorie}/{subcategorie}/{userId}', name: 'scrie_post')]
+    public function scriePost(Request $request, $categorie,$subcategorie,$userId): Response
+    {
+        //$movie = $this->movieRepository->find($id);
+   
+        $postare = new PostForumDb1();
+        $form=$this->createForm(PostForumDBFormType::class,$postare);//apeleaza met createForm
+        //dd("sal");
+        //exit;
+
+        //$categorie=dump($request->query->get('categorie'));
+        //dd($categorie);
+        //$subcategorie=dump($request->query->get('subcategorie'));
+        //$userId=dump($request->query->get('userId'));
+        //$datetime = new DateTime();
+        $datetime = new \DateTime('@'.strtotime('now'));
+        $approved = 0;
+        //$datetime = date('Y-m-d h:i:s', time());
+        //dd($userId);
+        //exit;
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $newPostare=$form->getData();
+            //$newPostare->setIdUser(2);
+            $newPostare->setIdUser($userId);
+            //$newPostare->setCategorie($categorie);
+            $newPostare->setIdSubcateg($subcategorie);
+            $newPostare->setTimp($datetime);
+            $newPostare->setApproved($approved);
+            //dd({{categorieDB}});
+            //dd($categorieDB);
+            //dd($newPostare);
+            //dd($newPostare->getText());
+            //exit;
+        
+            //ca sa trimita in BD
+            $this->em->persist($newPostare);
+            $this->em->flush();
+
+            return $this->redirectToRoute('forumBD', ['categorie'=> $categorie,'subcategorie'=> $subcategorie]);
+           //return $this->render('bibicu_dorin/forum.html.twig', 
+            //['categorie'=>$categorie,'subcategorie'=>$subcategorie]);
+        }
+        
+        return $this->render('bibicu_dorin/postareInForum.html.twig', 
+        ['form' => $form->createView(),'categorie'=>$categorie,'subcategorie'=>$subcategorie]);
+    }
+
+
+    #[Route('/BibicuDorin/post/edit/{id}/{val}',name: 'editt_post')]
+    public function editPost(PostForumDb1Repository $postRepository,$id, $val,Request $request): Response 
+    {
+        //$this->checkLoggedInUser($id);
+
+        //dd($val);
+        //exit;
+
+        $post = $postRepository->find($id);
+        $form = $this->createForm(PostForumDBFormType::class, $post);
+
+        $categorie=dump($request->query->get('categorie'));
+        //dd($categorie);
+        //exit;
+        $subcategorie=dump($request->query->get('subcategorie'));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+                if($val ==1)
+                {
+                    $post->setApproved(1);
+                }
+                if($val ==2)
+                {
+                    $post->setApproved(2);
+                }
+                
+                $this->em->flush();
+                //return $this->redirectToRoute('galerie_img');
+                return $this->redirectToRoute('forumBD', ['categorie'=> $categorie,'subcategorie'=> $subcategorie]);
+        }
+
+        return $this->render('bibicu_dorin/postareInForum.html.twig', 
+        ['form' => $form->createView(),'categorie'=>$categorie,'subcategorie'=>$subcategorie]);
+    }
+
+
+    #[Route('/BibicuDorin/adaugaCategorie/{categorie}/{subcategorie}/{userId}', name: 'adauga_categorie')]
+    public function adaugaCategorie(Request $request,$categorie,$subcategorie,$userId): Response
+    {
+        //$movie = $this->movieRepository->find($id);
+   
+        $categ = new CategoriesForumDb2();
+        $form=$this->createForm(CategoriesForumDB2FormType::class,$categ);//apeleaza met createForm
+        //dd("sal");
+        //exit;
+        
+        //preluate din metoda GET
+       //$categorie=dump($request->query->get('categorie'));
+       //$categorie = $imageRepository->find($id);
+        //dd($categorie);
+        //dd($_POST['categorie']);
+        //exit;
+        //$subcategorie=$_POST['subcategorie'];
+        //$subcategorie=dump($request->query->get('subcategorie'));
+        //$userId=$_POST['userId'];
+        //$userId=dump($request->query->get('userId'));
+        //dd($userId);
+        //dd($_POST['userId']);
+        //exit;
+        //$datetime = new DateTime();
+        $datetime = new \DateTime('@'.strtotime('now'));
+        $approved = 0;
+        //$datetime = date('Y-m-d h:i:s', time());
+       
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $newCategorie=$form->getData();
+            //$newPostare->setIdUser(2);
+            $newCategorie->setIdUser($userId);
+            //$newPostare->setCategorie($categorie);
+            //$newPostare->setIdSubcateg($subcategorie);
+            $newCategorie->setTimp($datetime);
+            $newCategorie->setApproved($approved);
+            //dd({{categorieDB}});
+            //dd($categorieDB);
+            //dd($newPostare);
+            //dd($newPostare->getText());
+            //exit;
+        
+            //ca sa trimita in BD
+            $this->em->persist($newCategorie);
+            $this->em->flush();
+
+            return $this->redirectToRoute('forumBD', ['categorie'=> $categorie,'subcategorie'=> $subcategorie]);
+           //return $this->render('bibicu_dorin/forum.html.twig', 
+            //['categorie'=>$categorie,'subcategorie'=>$subcategorie]);
+        }
+        
+        return $this->render('bibicu_dorin/adaugaCategorie.html.twig', 
+        ['form' => $form->createView(),'categorie'=>$categorie,'subcategorie'=>$subcategorie,'userId'=>$userId]);
+    }
+
+
+
+    #[Route('/BibicuDorin/afiseazaCategorie/{userId}',name: 'categorieBD')]
+    public function Bibicu_Dorin_categorie(CategoriesForumDb2Repository $actSRepository,UserDBRepository $actSRepository3,$userId): Response
+    {
+        //acts=Categorii actS1=subcategorii, actS2=post, actS3=user
+        $actS=$actSRepository->findAll();
+        //$actS1=$actSRepository1->findAll();
+        //$actS2=$actSRepository2->findAll();
+        $actS3=$actSRepository3->findAll();
+        //dd($actS);
+        //exit;
+
+        return $this->render('bibicu_dorin/afiseazaCategorie.html.twig',['activitatiS'=>$actS,'activitatiS3'=>$actS3,'userId'=>$userId]);
+    }
+
+
+
+    #[Route('/BibicuDorin/categorie/edit/{id}/{val}/{userId}',name: 'edit_categorie')]
+    public function editCategorie(CategoriesForumDb2Repository $categorieRepository,$id,$val,$userId,Request $request): Response 
+    {
+        //$this->checkLoggedInUser($id);
+
+        //dd($id);
+        //exit;
+
+        $categorie = $categorieRepository->find($id);
+        $form = $this->createForm(CategoriesForumDB2FormType::class, $categorie);
+
+        //$categorie=dump($request->query->get('categorie'));
+        //dd($categorie);
+        //exit;
+        //$subcategorie=dump($request->query->get('subcategorie'));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+                if($val ==1)
+                {
+                    $categorie->setApproved(1);
+                }
+                if($val ==2)
+                {
+                    $categorie->setApproved(2);
+                }
+                
+                $this->em->flush();
+                //return $this->redirectToRoute('galerie_img');
+                return $this->redirectToRoute('categorieBD',['userId'=>$userId]);
+        }
+
+        return $this->render('bibicu_dorin/adaugaCategorie.html.twig', 
+        ['form' => $form->createView()]);
+    }
+
+
+    #[Route('/BibicuDorin/adaugaSubcategorie/{categorie}/{subcategorie}/{userId}', name: 'adauga_subcategorie')]
+    public function adaugaSubcategorie(Request $request,$categorie,$subcategorie,$userId): Response
+    {
+        //$movie = $this->movieRepository->find($id);
+   
+        $subcategorie = new SubcategoriesForumDb2();
+        $form=$this->createForm(SubcategoriesForumDB2FormType::class,$subcategorie);//apeleaza met createForm
+        //dd("sal");
+        //exit;
+
+        //$categorie=dump($request->query->get('categorie'));
+        //dd($categorie);
+        //exit;
+        //$subcategorie=dump($request->query->get('subcategorie'));
+        //$userId=dump($request->query->get('userId'));
+        //$datetime = new DateTime();
+        $datetime = new \DateTime('@'.strtotime('now'));
+        $approved = 0;
+        //$datetime = date('Y-m-d h:i:s', time());
+        //dd($userId);
+        //exit;
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $newSubcategorie=$form->getData();
+            //$newPostare->setIdUser(2);
+            $newSubcategorie->setIdUser($userId);
+            $newSubcategorie->setIdCateg($categorie);
+            //$newPostare->setIdSubcateg($subcategorie);
+            $newSubcategorie->setTimp($datetime);
+            $newSubcategorie->setApproved($approved);
+            //dd({{categorieDB}});
+            //dd($categorieDB);
+            //dd($newPostare);
+            //dd($newPostare->getText());
+            //exit;
+        
+            //ca sa trimita in BD
+            $this->em->persist($newSubcategorie);
+            $this->em->flush();
+
+            return $this->redirectToRoute('forumBD',['categorie'=>$categorie,'subcategorie'=>$subcategorie,'userId'=>$userId]);
+           //return $this->render('bibicu_dorin/forum.html.twig', 
+            //['categorie'=>$categorie,'subcategorie'=>$subcategorie]);
+        }
+        
+        return $this->render('bibicu_dorin/adaugaSubcategorie.html.twig', 
+        ['form' => $form->createView(),'categorie'=>$categorie,'subcategorie'=>$subcategorie,'userId'=>$userId]);
+    }
+
+
+    #[Route('/BibicuDorin/afiseazaSubcategorie',name: 'subcategorieBD')]
+    public function Bibicu_Dorin_subcategorie(SubcategoriesForumDb2Repository $actSRepository,CategoriesForumDb2Repository $actSRepository1,UserDBRepository $actSRepository3): Response
+    {
+        //acts=Categorii actS1=subcategorii, actS2=post, actS3=user
+        $actS=$actSRepository->findAll();
+        $actS1=$actSRepository1->findAll();
+        //$actS2=$actSRepository2->findAll();
+        $actS3=$actSRepository3->findAll();
+		//dd($actS);
+        //exit;
+
+        return $this->render('bibicu_dorin/afiseazaSubcategorie.html.twig',['activitatiS'=>$actS,'activitatiS1'=>$actS1,'activitatiS3'=>$actS3]);
+    }
+
+    #[Route('/BibicuDorin/subcategorie/edit/{id}/{val}',name: 'edity_post')]
+    public function editSubcategorie(SubcategoriesForumDb2Repository $subcategorieRepository,$id, $val,Request $request): Response 
+    {
+        //$this->checkLoggedInUser($id);
+
+        //dd($val);
+        //exit;
+
+        $subcategorie = $subcategorieRepository->find($id);
+        $form = $this->createForm(SubcategoriesForumDB2FormType::class, $subcategorie);
+
+        //$categorie=dump($request->query->get('categorie'));
+        //dd($categorie);
+        //exit;
+        //$subcategorie=dump($request->query->get('subcategorie'));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+                if($val ==1)
+                {
+                    $subcategorie->setApproved(1);
+                }
+                if($val ==2)
+                {
+                    $subcategorie->setApproved(2);
+                }
+                
+                $this->em->flush();
+                //return $this->redirectToRoute('galerie_img');
+                return $this->redirectToRoute('subcategorieBD');
+        }
+
+        return $this->render('bibicu_dorin/adaugaSubcategorie.html.twig', 
+        ['form' => $form->createView()]);
+    }
 }

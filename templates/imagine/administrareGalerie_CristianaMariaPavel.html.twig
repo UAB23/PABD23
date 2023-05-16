@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Administrare galerie - Cristiana-Maria Pavel</title>
+    <link type = "text/css" rel="stylesheet" href="css/cristiana-maria-pavel/administrareGalerie.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <table id="imagini">
+      <thead>
+      <tr>
+        <th>Imagine</th>
+        <th>Actualizare</th>
+        <th>Ștergere</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for imagine in imagini %}
+          <tr>
+            <td contenteditable>{{imagine.nume}}</td>
+            <td><button type="button" onclick="update({{imagine.id}})">Actualizare</button></td>
+            <td><button type="button" onclick="stergere({{imagine.id}})">Ștergere</button></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <h3>Adăugare imagine nouă</h3>
+    <br>
+    <label for="nume">Nume:</label>
+    <input type="text" id="nume" name="nume_imagine">
+    <label for="descriere">Descriere:</label>
+    <input type="text" id="descriere" name="descriere_imagine">
+    <button type="button" onclick="adaugare()">Adăugare imagine</button>
+    <br>
+    <p id="mesaj"></p>
+    <script>
+      function update(id) {
+        var nume = document.getElementById("imagini").rows[id].cells[0].innerHTML;
+        $.ajax('{{ path('update_imagine') }}', {
+                       data: {
+                               "id": id,
+                               "nume": nume
+                       },
+                       success: function(data) {
+                               console.log(data);
+                               document.getElementById("mesaj").innerHTML = "Imagine actualizată cu succes!";
+                       },
+                       error: function() {
+                               document.getElementById("mesaj").innerHTML = "Imaginea nu a putut fi actualizată!";
+                       }
+        });
+      }
+
+      function stergere(id) {
+        $.ajax('{{ path('delete_imagine') }}', {
+                       data: {
+                               "id": id
+                       },
+                       success: function(data) {
+                               console.log(data);
+                               document.getElementById("mesaj").innerHTML = "Imagine ștearsă cu succes!";
+                       },
+                       error: function() {
+                               document.getElementById("mesaj").innerHTML = "Imaginea nu a putut fi ștearsă!";
+                       }
+        });
+      }
+
+
+      function adaugare() {
+        var nume = document.getElementById("nume").value;
+        var descriere = document.getElementById("descriere").value;
+        console.log(nume);
+        console.log(descriere);
+        $.ajax('{{ path('save_imagine') }}', {
+                       data: {
+                               "nume": nume,
+                               "descriere":descriere
+                       },
+                       success: function(data) {
+                               console.log(data);
+                               document.getElementById("mesaj").innerHTML = "Imagine salvată cu succes!";
+                       },
+                       error: function() {
+                               document.getElementById("mesaj").innerHTML = "Imaginea nu a putut fi salvată!";
+                       }
+                     });
+        }
+</script>
+
+  </body>
+
+</html>

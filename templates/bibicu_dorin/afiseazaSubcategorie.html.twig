@@ -1,0 +1,109 @@
+{% extends "/bibicu_dorin/base.html.twig" %}
+
+
+{% block body %}
+
+
+<div class="w-4/5 m-auto pt-20">
+    <h1 class="text-6xl text-center pb-12">
+        Modifica o subcategorie
+    </h1>
+
+{# Categorie= {{ app.request.get("categorie") }} #}
+
+<br><br>
+<table class="stil">
+    <tr>
+        <th>Email utilizator</th>
+        <th>Categorie</th>
+        <th>Subcategorie</th>
+        <th>Data propunere</th>
+        {% if app.user %}
+        {% if app.user.roles[0] =='ROLE_ADMIN' %}
+        <th>Aprobat</th>
+        <th>Aproba</th>
+        <th>Respinge</th>
+        {% endif %}
+        {% endif %}
+    </tr>
+
+    {% for act in activitatiS %}
+
+      {% if app.user %}
+
+          {% if app.user.roles[0] =='ROLE_ADMIN' %}
+               <tr>
+                        <td>
+                            {% for act3 in activitatiS3 %}
+                                {% if (act3.getId()) == (act.getIdUser())  %} 
+                                {{act3.email}}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for act1 in activitatiS1 %}
+                                {% if (act1.getId()) == (act.getIdCateg())  %} 
+                                {{act1.name}}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td> {{act.name}}</td>
+                        <td>{{act.timp|date('d-m-Y H:i:s')}}</td>
+                        <td><input type=text value={{act.approved}} disabled style="text-align: center;"></td>
+                        <!-- <td><input type=submit value=Modifica style="text-align: center;"></td> -->
+                        <td> <a href="/BibicuDorin/subcategorie/edit/{{act.id}}/1"> Aproba </a></td>
+                        <td> <a href="/BibicuDorin/subcategorie/edit/{{act.id}}/2"> Respinge </a></td>
+                </tr>   
+                    {% else %}
+                        {% if (act.getApproved()) == 1 %}  
+                            <tr>
+                                <td>
+                                    {% for act3 in activitatiS3 %}
+                                        {% if (act3.getId()) == (act.getIdUser())  %} 
+                                        {{act3.email}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {# determin nume categorie #}
+                                    {% for act1 in activitatiS1 %}
+                                        {% if (act1.getId()) == (act.getIdCateg())  %} 
+                                        {{act1.name}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td> {{act.name}}</td>
+                                <td>{{act.timp|date('d-m-Y H:i:s')}}</td>
+                            </tr>
+                        {% endif %}
+
+           {% endif %}
+
+           {% else %}
+                        {% if (act.getApproved()) == 1 %}  
+                            <tr>
+                                <td>
+                                    {# determin email utilizator #}
+                                    {% for act3 in activitatiS3 %}
+                                        {% if (act3.getId()) == (act.getIdUser())  %} 
+                                        {{act3.email}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {# determin nume categorie #}
+                                    {% for act1 in activitatiS1 %}
+                                        {% if (act1.getId()) == (act.getIdCateg())  %} 
+                                        {{act1.name}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td> {{act.name}}</td>
+                                <td>{{act.timp|date('d-m-Y H:i:s')}}</td>
+                            </tr>
+                        {% endif %}
+        {% endif %}
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

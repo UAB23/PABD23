@@ -16,3 +16,7 @@ Bibicu_Dorin:
 MariaNeculaStan:
     path: /MariaNeculaStan
     controller: App\Controller\MariaNeculaStanController::index
+
+Basem-Hammad:
+    path: /basem-hammad
+    controller: App\Controller\BasemHammadController::indexB

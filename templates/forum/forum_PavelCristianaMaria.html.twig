@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Forum - Cristiana-Maria Pavel</title>
+    <link type = "text/css" rel="stylesheet" href="css/cristiana-maria-pavel/forum.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div clss = "grid-container">
+      <div id = "categorii">
+        <ol>
+          {% for categorie in categorii %}
+            <li class="categorie-item">{{categorie.nume}}</li>
+              <ul>
+                {% for subcategorie in subcategorii %}
+                  {% if subcategorie.idCategorie == categorie.id %}
+                    <li><a href="javascript:getPostare({{subcategorie.id}})">{{subcategorie.nume}}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+          {% endfor %}
+        </ol>
+      </div>
+
+      <div id = "postari">
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function getPostare(subcategorieId) {
+      $.ajax('{{ path('get_postari') }}', {
+                     data: {
+                             "subcategorieId": subcategorieId,
+                     },
+                     success: function(postari) {
+                     document.querySelector('#postari').innerHTML = '';
+                     $.each(postari , function(index, item) {
+                         document.querySelector('#postari').innerHTML += '<span class = "postare">' + item.text + '</span>';
+                         var formattedDate = new Date(item.data.date);
+                         document.querySelector('#postari').innerHTML += '<span class = "data">' + formattedDate.getDate() + '/' + (formattedDate.getMonth()+1) + '/' + formattedDate.getFullYear() + '</span>';
+                     });
+                     },
+                     error: function() {
+                     }
+      });
+    }
+  </script>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BiancaManGalerie!{% endblock %}
+{% block custom_css %} <link rel="stylesheet" type="text/css" href="{{asset('/BiancaMan/css/galerie.css')}}" />{% endblock %}
+{% block body %}
+<div class="galerie-wrapper"> <nav> <a href="/bianca/man">Home </a> <a href="/bianca/man/galerie">Galerie </a>  {% if isLoggedIn == true %} <a href="/bianca/man/aptitudini">Aptitudini </a> {% endif %}
+ {% if isLoggedIn != true %}<a href="/bianca/man/login">Login </a>{% endif %}{% if isLoggedIn == true %} <a href="/bianca/man/logout">Logout </a> {% endif %} </nav>
+<div class="imaginiContent"> 
+{% for imagine in imagini %}
+<img src="{{imagine}}"> </img>
+{% endfor %}
+ </div> 
+</div>
+{% endblock %}

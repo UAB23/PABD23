@@ -1,0 +1,16 @@
+html,body{margin:0;}
+nav{padding:10px; background-color:darkorchid ;width: 100%;margin-bottom: 16px;} 
+a{font-size: 26px;padding: 5px;cursor: pointer;text-decoration:underline;}
+.example-wrapper{ align-items: center;
+    display:flex;
+    flex-direction: column;
+}
+h3{
+    font-size: 22px;
+}
+.bmUserContent { align-items: center;
+    display:flex;
+    flex-direction: column;
+
+}
+.profilepictures{object-fit: contain; width:200px;}

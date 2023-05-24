@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.titlu, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.descriere, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Save Article') }}</button>
+{{ form_end(form) }}

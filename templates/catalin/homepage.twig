@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CatalinGalleryController!{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<img src="{{asset('images/alfa.jpg')}}" alt="Alfa Romeo">
+<
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <form id="signForm">
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="email" class="form-control" />
+    <label class="form-label" for="email">Email address</label>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-4">
+    <input type="password" id="password" class="form-control" />
+    <label class="form-label" for="password">Password</label>
+  </div>
+
+  <!-- 2 column grid layout for inline styling -->
+  <div class="row mb-4">
+    <div class="col d-flex justify-content-center">
+      
+    </div>
+
+    <div class="col">
+      <!-- Simple link -->
+      <a href="#!">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <button type="button" onclick="login()" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+  
+  </div>
+</form>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'F:/documente cata/master/anul 2/sem 2/Lucru in echipa/src/Controller/CatalinGalleryController.php'|file_link(0) }}">src/Controller/CatalinGalleryController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'F:/documente cata/master/anul 2/sem 2/Lucru in echipa/templates/catalin_gallery/index.html.twig'|file_link(0) }}">templates/catalin_gallery/index.html.twig</a></code></li>
+    </ul>
+</div>
+
+{% for articol in articole %}
+    
+      <h2>{{articol.titlu}}</h2>
+      <h2>{{articol.descriere}}</h2>
+      <br>
+               
+{% endfor %}
+
+
+<a id="newArticle" display="none" href="{{ path('createArticle') }}">Create Article</a>
+
+
+<script>
+
+    
+    function login(){
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        if(email=="catalinhabean@gmail.com" && password=="catalin123")
+        {
+            var newArticle = document.getElementById ( "newArticle" );
+            var form = document.getElementById ( "signForm" );
+            newArticle.style.visibility = "visible" ;
+            form.style.visibility = "hidden" ;
+
+            console.log("Conectare cu succes");
+        }
+        else
+        {
+            console.log("User sau parola gresita");
+        }
+    }
+    window.onload = function() {
+        newArticle.style.visibility = "hidden" ;
+    };
+    
+</script>
+{% endblock %}
+

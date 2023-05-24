@@ -16,3 +16,7 @@ Bibicu_Dorin:
 MariaNeculaStan:
     path: /MariaNeculaStan
     controller: App\Controller\MariaNeculaStanController::index
+
+DobrinPaul:
+    path: /PaulPaul
+    controller: App\Controller\ArticleController::index

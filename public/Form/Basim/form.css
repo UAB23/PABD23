@@ -1,0 +1,23 @@
+body {background-color: #fa9797;}
+
+.grid-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.posts {
+  border-style: solid;
+  border-color: #FF7F0D;
+  padding: 10px;
+  margin-top: 20px;
+  display: block;
+}
+
+.post > span {
+    float: left;
+}
+
+.data {
+	background-color: #4D2908;
+	color: white;
+}

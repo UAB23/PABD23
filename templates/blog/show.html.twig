@@ -1,0 +1,10 @@
+<!-- templates/blog/show.html.twig -->
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.content }}</p>
+{% endblock %}

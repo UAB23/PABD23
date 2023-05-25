@@ -16,3 +16,7 @@ Bibicu_Dorin:
 MariaNeculaStan:
     path: /MariaNeculaStan
     controller: App\Controller\MariaNeculaStanController::index
+
+CatalinHabean:
+    path: /catalin
+    controller: App/Controller/CatalinController::index

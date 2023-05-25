@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CatalinGalleryController!{% endblock %}
+
+
+{% block title %}Hello Catalin!{% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/main.js') }}"></script>
@@ -8,11 +10,20 @@
 
 {% block body %}
 <style>
+.mainbox {display: flex;flex-direction:column;}
+.imgs{height:250px;width:350px;}
+.gallery, .header { display:flex;}
+.list{ margin:10px;}
+.article {border:1px solid gray; border-radius: 10px 10px; margin:10px; padding:0px 20px;}
+    input { border-color:gray;}
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-<img src="{{asset('images/alfa.jpg')}}" alt="Alfa Romeo">
-<
+<div class="mainbox">
+
+<div class="header">
+<img class="imgs" src="{{asset('images/alfa.jpg')}}" alt="Alfa Romeo">
+
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
     <form id="signForm">
@@ -23,7 +34,7 @@
   </div>
 
   <!-- Password input -->
-  <div class="form-outline mb-4">
+  <div class="form-outline mb-4 inputform">
     <input type="password" id="password" class="form-control" />
     <label class="form-label" for="password">Password</label>
   </div>
@@ -46,25 +57,24 @@
   
   </div>
 </form>
-
-    This friendly message is coming from:
+</div class="list">
     <ul>
         <li>Acesta este primul element din lista.</li>
         <li>Acesta este al doilea element din lista</li>
     </ul>
 </div>
-
+<div class="gallery">
 {% for articol in articole %}
-    
-      <h2>{{articol.titlu}}</h2>
-      <h2>{{articol.descriere}}</h2>
+    <div class="article">
+      <h1>{{articol.titlu}}</h2>
+      <h4>{{articol.descriere}}</h2>
       <br>
-               
+    </div>
 {% endfor %}
-
+</div>
 
 <a id="newArticle" display="none" href="{{ path('createArticle') }}">Create Article</a>
-
+</div>
 
 <script>
 

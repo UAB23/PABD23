@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BiancaManHomePage!{% endblock %}
+{% block custom_css %} <link rel="stylesheet" type="text/css" href="{{asset('/BiancaMan/css/homepage.css')}}" />{% endblock %}
+{% block body %}
+<div class="example-wrapper"> <nav> <a href="/bianca/man">Home </a> <a href="/bianca/man/galerie">Galerie </a>{% if isLoggedIn == true %} <a href="/bianca/man/aptitudini">Aptitudini </a> {% endif %}
+ {% if isLoggedIn != true %}<a href="/bianca/man/login">Login </a>{% endif %} {% if isLoggedIn == true %} <a href="/bianca/man/logout">Logout </a> {% endif %}
+</nav>
+<div class="bmUserContent"> <img class="profilepictures" src="/BiancaMan/imagini/pozaBM.jpg"> </img> <h3>{{user.nume}} </h3> <p>{{user.ocupatie}} </p> <p>{{user.resedinta}} </p> <p>{{user.anulnasterii}} </p> 
+Aptitudini:
+<ul>{% for apt in user.aptitudini %}
+
+<li><p>{{apt.nume}}</p></li>
+{% endfor %}</ul>
+</div> 
+</div>
+{% endblock %}

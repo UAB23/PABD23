@@ -1,0 +1,60 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    color: #666;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #999;
+    margin-top: 20px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+a {
+    color: #007bff;
+}
+
+/* Specific Styles */
+h1,
+h2,
+h3 {
+    text-decoration: underline;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+p + ul {
+    margin-top: -10px;
+}
+
+/* Styling the GitHub link */
+p a {
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: none;
+}
+
+/* Add your own custom styles below this line */

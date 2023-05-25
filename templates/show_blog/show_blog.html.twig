@@ -1,0 +1,34 @@
+<html>
+   <head>
+      <title>{{owner}}</title>
+      <link rel="stylesheet" href="UserBlog/css/userStyle.css" />
+      <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        background:pink;
+      }
+      tr {
+        border-bottom: 1px solid #ddd;
+      }
+      </style>
+   </head>
+     <body class="body-style">
+      <div class="bg-column">
+<table>
+      <tr>
+        <th>Name author</th>
+        <th>Profession author</th>
+        <th>Article title</th>
+         <th>Comment</th>
+      </tr>
+      <tr>
+        <td>{{chat.name}}</td>
+        <td>{{chat.profession}}</td>
+        <td>{{chat.title}}</td>
+        <td>{{chat.message}}</td>
+      </tr>
+        </table>
+    </div>
+  </body>
+</html>

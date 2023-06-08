@@ -1,0 +1,12 @@
+html,body{margin:0;}
+nav{padding:10px; background-color:darkorchid ;width: 100%;margin-bottom: 16px;} 
+a{font-size: 26px;padding: 5px;cursor: pointer;text-decoration:underline;}
+.aptitudini-wrapper{ align-items: center;
+    display:flex;
+    flex-direction: column;
+}
+.loginForm{ display: flex;
+flex-direction: column;gap:6px}
+.logInButton{
+    padding:6px
+}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pagina personla{% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="css/styleRpg.css">{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Pagina personla</h1>
+        {#<a href="{{ url('PaulRadu/create') }}">Create data</a>#}
+        <div class="profile-section">
+            <div class="profile-picture">
+                <img src="rpg.jpg" alt="poza" width="300" height="400">
+            </div>
+            <div class="profile-details">
+                <h2>{{ name }}</h2>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Localitatea:</strong> {{ location }}</p>
+                <p><strong>Ocupatie:</strong> {{ bio }}</p>
+            </div>
+        </div>
+        <div class="content-section">
+            <h3>Despre mine</h3>
+            <p>{{ about_me }}</p>
+        </div>
+        <div class="skills-section">
+            <h3>Aptitudini</h3>
+            <ul>
+                {% for skill in skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

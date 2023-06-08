@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BiancaManLoginPage!{% endblock %}
+{% block custom_css %} <link rel="stylesheet" type="text/css" href="{{asset('/BiancaMan/css/login.css')}}" />{% endblock %}
+{% block body %}
+<div class="aptitudini-wrapper">  <nav> <a href="/bianca/man">Home </a> <a href="/bianca/man/galerie">Galerie </a>{% if isLoggedIn == true %} <a href="/bianca/man/aptitudini">Aptitudini </a> {% endif %}
+ {% if isLoggedIn != true %}<a href="/bianca/man/login">Login </a>{% endif %}
+</nav>
+<div class="loginForm">   
+
+   
+    {{ form_start(form) }}
+       {{ form_widget(form) }}
+        
+        <button 
+        type="submit" 
+        class="logInButton">
+        Logout
+    </button>
+    {{ form_end(form) }}   
+</div>
+{% endblock %}

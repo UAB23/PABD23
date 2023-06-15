@@ -1,0 +1,75 @@
+{% if app.request.hasPreviousSession() and app.request.session.flashBag.has('error') %}
+    <div class="alert alert-danger">
+        {{ app.request.session.flashBag.get('error')[0] }}
+    </div>
+{% endif %}
+
+<div class="login-form">
+    {{ form_start(form) }}
+        <h2>Login</h2>
+        <div class="form-group">
+            {{ form_label(form.username, 'Username') }}
+            {{ form_widget(form.username, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.password, 'Password') }}
+            {{ form_widget(form.password, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <button type="submit" class="btn btn-primary" >Login</button> <br><br>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='{{ path('registration') }}'">
+        Create Account
+        </button>
+
+</div>
+
+<style>
+    .login-form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .login-form h2 {
+        color: #333;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .login-form .form-group {
+        margin-bottom: 15px;
+    }
+
+    .login-form label {
+        font-weight: bold;
+    }
+
+    .login-form .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .login-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .login-form button:hover {
+        background-color: #0069d9;
+    }
+    #login{
+        background-color:darkgreen;
+    }
+    #login:hover {
+        background-color:green;
+    }
+</style>

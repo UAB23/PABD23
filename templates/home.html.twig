@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text></svg>">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin-top: 50px;
+            animation: slide-in-top 1s ease-in-out;
+        }
+
+        p {
+            color: #777;
+            font-size: 18px;
+            margin-top: 20px;
+            animation: fade-in 1s ease-in-out;
+        }
+
+        @keyframes slide-in-top {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my website!</h1>
+    <p>This is the home page content.</p>
+    <a href="{{ path('login') }}"> Create Account or Sign In</a> <!-- Add this line -->
+    {% block body %}{% endblock %}
+</body>
+</html>

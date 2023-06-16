@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-<<<<<<< HEAD
 
 
 {% block title %}Hello Catalin!{% endblock %}
-=======
-{% block title %}Hello CatalinGalleryController!{% endblock %}
->>>>>>> 4b8d7f1 (Pagina Dinamica)
 
 {% block javascripts %}
     <script src="{{ asset('js/main.js') }}"></script>
@@ -14,7 +10,6 @@
 
 {% block body %}
 <style>
-<<<<<<< HEAD
 .mainbox {display: flex;flex-direction:column;}
 .imgs{height:250px;width:350px;}
 .gallery, .header { display:flex;}
@@ -29,13 +24,6 @@
 <div class="header">
 <img class="imgs" src="{{asset('images/alfa.jpg')}}" alt="Alfa Romeo">
 
-=======
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-<img src="{{asset('images/alfa.jpg')}}" alt="Alfa Romeo">
-<
->>>>>>> 4b8d7f1 (Pagina Dinamica)
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
     <form id="signForm">
@@ -46,11 +34,7 @@
   </div>
 
   <!-- Password input -->
-<<<<<<< HEAD
   <div class="form-outline mb-4 inputform">
-=======
-  <div class="form-outline mb-4">
->>>>>>> 4b8d7f1 (Pagina Dinamica)
     <input type="password" id="password" class="form-control" />
     <label class="form-label" for="password">Password</label>
   </div>
@@ -73,7 +57,6 @@
   
   </div>
 </form>
-<<<<<<< HEAD
 </div class="list">
     <ul>
         <li>Acesta este primul element din lista.</li>
@@ -92,27 +75,6 @@
 
 <a id="newArticle" display="none" href="{{ path('createArticle') }}">Create Article</a>
 </div>
-=======
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'F:/documente cata/master/anul 2/sem 2/Lucru in echipa/src/Controller/CatalinGalleryController.php'|file_link(0) }}">src/Controller/CatalinGalleryController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'F:/documente cata/master/anul 2/sem 2/Lucru in echipa/templates/catalin_gallery/index.html.twig'|file_link(0) }}">templates/catalin_gallery/index.html.twig</a></code></li>
-    </ul>
-</div>
-
-{% for articol in articole %}
-    
-      <h2>{{articol.titlu}}</h2>
-      <h2>{{articol.descriere}}</h2>
-      <br>
-               
-{% endfor %}
-
-
-<a id="newArticle" display="none" href="{{ path('createArticle') }}">Create Article</a>
-
->>>>>>> 4b8d7f1 (Pagina Dinamica)
 
 <script>
 

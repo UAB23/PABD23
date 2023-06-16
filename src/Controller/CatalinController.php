@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
+use App\Entity\Articles;
 use App\Repository\ArticleRepository;
 use App\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,10 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-<<<<<<< HEAD
-=======
-#[AsController]
->>>>>>> 4b8d7f1 (Pagina Dinamica)
+
 class CatalinController extends AbstractController
 {
     #[Route('/catalin')]
@@ -48,7 +45,7 @@ class CatalinController extends AbstractController
     #[Route('/catalin/createArticle', name: 'createArticle')]
     public function createArticle(Request $request,ArticleRepository $articleRepository): Response
     {
-        $article = new Article();
+        $article = new Articles();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 

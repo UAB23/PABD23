@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Movies!{% endblock %}
+{% block stylesheets %}
+        <link href="{{ asset('css/movies/movies_style.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<style>
+
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: blue; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <div class="card-body">
+        <a class="btn btn-outline-info" href="{{ path('movie_add') }}"> 
+            Add new movie 
+        </a><br><br>
+        <table class="table table-bordered">
+            <tr>
+                <th>Titlu</th>
+                <th>Descriere</th>
+                <th>Pret bilet</th>
+                <th>Locatie</th>
+                <th>Data</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            {% for movie in movies %}
+            <tr>
+                <td>{{ movie.titlu }}</td>
+                <td>{{ movie.descriere }}</td>
+                <td>{{ movie.pretBilet }}</td>
+                <td>{{ movie.locatie }}</td>
+                <td>{{ movie.data|date('d-m-Y')}}</td>
+                <td>
+                    <a
+                        class="btn btn-outline-success"
+                        href="{{ path('movie_edit', {'id': movie.id}) }}">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a
+                        class="btn btn-outline-success"
+                        href="{{ path('movie_delete', {'id': movie.id}) }}">
+                        Delete
+                    </a>
+                </td>
+                {# <td>
+                    <form method="post" action="{{ path('app_movie_delete', {'id': movie.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <a
+                            class="btn btn-outline-info"
+                            href="{{ path('app_movie_show', {'id': movie.id}) }}">
+                            Show
+                        </a>
+                        <a
+                            class="btn btn-outline-success"
+                            href="{{ path('movie_edit', {'id': movie.id}) }}">
+                            Edit
+                        </a>
+
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movie.id) }}">
+                        <button class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </td> #}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

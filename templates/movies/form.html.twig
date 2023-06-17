@@ -1,0 +1,23 @@
+{% block stylesheets %}
+        <link href="{{ asset('css/movies/movies_form.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_row(form.titlu, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.descriere, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.pret_bilet, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.locatie, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(form.data, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <button class="btn {{ button_color|default('btn-outline-primary') }}  mt-3">{{ button_label|default('Save Movie') }}</button>
+{{ form_end(form) }}

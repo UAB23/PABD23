@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Edit Movie{% endblock %}
+ 
+{% block body %}
+    <div class="container" style="width:40%;margin:auto;">
+        <h2 class="text-center mt-5 mb-3">Edit Movie</h2>
+        <div class="card">
+            {# <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('movies_index') }}"> 
+                    View All Movies
+                </a>
+            </div> #}
+            <div class="card-body">
+                {% include 'movies/form.html.twig' with {'button_label': 'Update Movies', 'button_color': 'btn-outline-success'}  %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

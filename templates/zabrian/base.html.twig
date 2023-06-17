@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+              {% block custom_css %}{% endblock %}
+        {% endblock %}
+        <link href="css/zc.css" rel="stylesheet" type="text/css" />
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+    {% block navbar %}
+     <nav class="nav">
+      <a href="/ZabrianCristian" id="home-tab" class="nav-link">Home</a>
+      {% if app.user %}
+      <a href="/profile" class="nav-link">Profile</a>
+      <a href="/logoutzc" class="nav-link">Logout</a>
+      {% else %}
+      <a href="/loginzc" id="login-tab" class="nav-link">Login</a>
+      <a href="/registerzc" id="register-tab" class="nav-link">Register</a>
+      {% endif %}
+    </nav>
+    {% endblock %}
+        {% block body %}{% endblock %}
+    </body>
+</html>

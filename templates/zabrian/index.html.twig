@@ -1,0 +1,76 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Hello ZabrianController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+     {% if app.user %}
+        <h1 class="mb-3">
+            Hello {{ app.user.userIdentifier }}!
+        </h1>
+    {% endif %}
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/cristianzabrian/Desktop/Stuff/PE/PABD23/src/Controller/ZabrianController.php'|file_link(0) }}">src/Controller/ZabrianController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/cristianzabrian/Desktop/Stuff/PE/PABD23/templates/zabrian/index.html.twig'|file_link(0) }}">templates/zabrian/index.html.twig</a></code></li>
+    </ul>
+    {% if app.user %}
+    <a
+    class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+     href="/logoutzc"
+    >
+    Logout  
+    </a>
+    {% else %}
+    <a
+    class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+    href="/loginzc"
+    >
+    Login
+    </a>
+    <p>or</p>
+    <a
+    class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
+    href="/registerzc"
+    >
+    Register
+    </a>
+    {% endif %}
+</div>
+{% endblock %} #}
+
+{% extends 'zabrian/base.html.twig' %}
+
+{% block title %}Cristian Zabrian{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+       #home-tab {
+        text-decoration: none;
+        border-bottom: 2px solid #007bff;
+       } 
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div class="container">
+        {% if app.user %}
+            <h1>Hello {{ app.user.userIdentifier }}!</h1>
+        {% endif %}
+
+        <div class="example-content">
+            <p>This friendly message is coming from:</p>
+            {# <ul>
+                <li>Your controller at <code>{{ path_to_controller }}</code></li>
+                <li>Your template at <code>{{ path_to_template }}</code></li>
+            </ul> #}
+        </div>
+    </div>
+{% endblock %}

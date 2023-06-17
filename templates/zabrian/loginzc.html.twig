@@ -1,0 +1,40 @@
+{% extends 'zabrian/base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+       #login-tab {
+        text-decoration: none;
+        border-bottom: 2px solid #007bff;
+       } 
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-content">
+            <h1 style="text-align: center; margin-bottom: 100px;">Login</h1>
+
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="inputEmail">Email:</label>
+                    <input type="email" id="inputEmail" name="email" class="form-control" value="{{ last_username }}" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password:</label>
+                    <input type="password" id="inputPassword" name="password" class="form-control" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="button-container">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

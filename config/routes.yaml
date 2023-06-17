@@ -16,7 +16,3 @@ Bibicu_Dorin:
 MariaNeculaStan:
   path: /MariaNeculaStan
   controller: App\Controller\MariaNeculaStanController::index
-
-ZabrianCristian:
-  path: /ZabrianCristian
-  controller: App\Controller\ZabrianCristianController::index

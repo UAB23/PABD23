@@ -18,13 +18,13 @@ security:
       lazy: true
       provider: app_user_provider
       custom_authenticator:
-        # - App\Security\LoginDBAuthenticator
-        - App\Security\AppZCAuthenticator
+        - App\Security\LoginDBAuthenticator
+        # - App\Security\AppZCAuthenticator
       logout:
         path: app_logout
         # where to redirect after logout
-        # target: indexBD
-        target: ZabrianCristian
+        target: indexBD
+        # target: ZabrianCristian
 
       # activate different ways to authenticate
       # https://symfony.com/doc/current/security.html#the-firewall

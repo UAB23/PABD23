@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paraipan Sorin</title>
+    <link rel="stylesheet" type="text/css" href="paraipan.css">
+</head>
+<body> 
+    <h1 id="h1_title">Paraipan Sorin - iOS Developer at Mozilla Firefox</h1>
+
+    <img src="paraipan.jpg">
+
+    <p>
+        As an iOS developer at Mozilla Firefox, I am part of the iOS team responsible for developing and maintaining the
+        Firefox browser for iOS devices. With a passion for mobile app development and a focus on iOS platforms, I work
+        diligently to enhance the browsing experience for our users.
+    </p>
+
+    <p>
+        My primary responsibilities revolve around designing, implementing, and testing new features for the Firefox
+        browser on iOS. I work closely with a talented team of developers to ensure smooth functionality and deliver
+        high-quality user experiences. Together, we strive to provide innovative solutions and stay up to date with the
+        latest iOS development practices.
+    </p>
+
+    <p>
+        One of the notable features I developed is the Zoom Page Bar. This feature allows users to adjust the zoom level
+        on different website domains and ensures that the selected zoom level remains persisted. With this enhancement,
+        users can personalize their browsing experience by zooming in or out on websites as per their preferences,
+        improving readability and accessibility.
+    </p>
+
+    <h2>Responsibilities:</h2>
+    <ul>
+        <li>Designing and implementing new features for the Firefox browser on iOS</li>
+        <li>Collaborating with the iOS team to ensure smooth functionality and user experience</li>
+        <li>Testing and debugging the application to maintain high-quality standards</li>
+        <li>Staying up to date with the latest iOS development practices and technologies</li>
+        <li>Participating in code reviews and providing constructive feedback to fellow developers</li>
+        <li>Contributing to the continuous improvement of the iOS development process</li>
+    </ul>
+
+    <p>
+        GitHub: <a href="https://github.com/PARAIPAN9">https://github.com/PARAIPAN9</a>
+    </p>
+
+    <h1>Todos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for todo in todos %}
+            <tr>
+                <td>{{ todo.id }}</td>
+                <td>{{ todo.title }}</td>
+                <td>
+                    <a href="{{ path('app_todo_show', {'id': todo.id}) }}">show</a>
+                    <a href="{{ path('app_todo_edit', {'id': todo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_todo_new') }}">Create new</a>
+</body>
+</html>

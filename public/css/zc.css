@@ -10,8 +10,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
-  margin-top: 2rem;
+  margin: 2rem;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -22,9 +21,65 @@ h1 {
   margin-bottom: 20px;
 }
 
-.example-content {
-  font-size: 18px;
-  line-height: 1.5;
+.blog-content {
+  width: 100%;
+  display: flex;
+}
+
+.b-col-1 {
+  width: 40%;
+}
+
+.b-col-2 {
+  width: 60%;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blog-picture {
+  border-radius: 10px;
+  width: 100%;
+  min-height: 20rem;
+  object-fit: cover;
+}
+
+.author-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-container {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  height: 5rem;
+}
+
+.author-avatar {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  object-fit: cover;
+}
+
+.author-name {
+  font-weight: bold;
+  margin-left: 1.5rem;
+}
+
+.publish-date {
+  color: #a8a8a8;
+  font-weight: bold;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+span {
+  margin-left: 0.5rem;
 }
 
 .nav {
@@ -104,6 +159,7 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
+  width: 20rem;
   box-sizing: border-box;
 }
 

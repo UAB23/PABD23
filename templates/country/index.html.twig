@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Stoica Brailescu George</h1>
+    <img src="ieu.jpeg" width="800" height="800">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>DateVisited</th>
+                <th>Comments</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <<div id = "text">
+			<p>Tari vizitate<p>
+            <p>Motivele principalele pentru a pleca in vacanta intr-o alta tara este pentru a descoperi cultura, trraditia si pentru a te putea conecta cu anumite locuri si persoane.</p>
+            <p>Este un mod de a te deconecta de realitate si de a te conecta cu tine insuti.</p>
+            <p>Iata o lista cu ce ati putea face intr-o tara straina:</p>
+            <ul>
+			  <li>1. Explorează orașele și atracțiile turistice</li>
+			  <li>2. Învață despre cultura locală</li>
+			  <li>3. Încearcă gastronomia locală</li>
+			  <li>4. Participă la tururi ghidate</li>
+			</ul>
+        {% for country in countries %}
+            <tr>
+                <td>{{ country.id }}</td>
+                <td>{{ country.Name }}</td>
+                <td>{{ country.DateVisited ? country.DateVisited|date('Y-m-d') : '' }}</td>
+                <td>{{ country.Comments }}</td>
+                <td>
+                    <a href="{{ path('app_country_show', {'id': country.id}) }}">show</a>
+                    <a href="{{ path('app_country_edit', {'id': country.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_country_new') }}">Create new</a>
+</body>
+</html>

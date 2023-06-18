@@ -1,7 +1,7 @@
 body {background-color: #ff0019f3;}
 
 #text {
-	text-align:center;
+	text-align:left;
 	grid-column-start: 1;
 	grid-column-end: 3;
 	grid-row-start: 1;

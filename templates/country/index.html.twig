@@ -3,8 +3,8 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Country index</h1>
-    <img src="ieu.jpeg" width="600" height="600">
+    <h1>Stoica Brailescu George</h1>
+    <img src="ieu.jpeg" width="800" height="800">
     <table class="table">
         <thead>
             <tr>
@@ -16,6 +16,17 @@
             </tr>
         </thead>
         <tbody>
+        <<div id = "text">
+			<p>Tari vizitate<p>
+            <p>Motivele principalele pentru a pleca in vacanta intr-o alta tara este pentru a descoperi cultura, trraditia si pentru a te putea conecta cu anumite locuri si persoane.</p>
+            <p>Este un mod de a te deconecta de realitate si de a te conecta cu tine insuti.</p>
+            <p>Iata o lista cu ce ati putea face intr-o tara straina:</p>
+            <ul>
+			  <li>1. Explorează orașele și atracțiile turistice</li>
+			  <li>2. Învață despre cultura locală</li>
+			  <li>3. Încearcă gastronomia locală</li>
+			  <li>4. Participă la tururi ghidate</li>
+			</ul>
         {% for country in countries %}
             <tr>
                 <td>{{ country.id }}</td>

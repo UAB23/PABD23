@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BlogPost{% endblock %}
+
+{% block body %}
+    <h1>Create new BlogPost</h1>
+
+    {{ include('blog_post/_form.html.twig') }}
+
+    <a href="{{ path('app_blog_post_index') }}">back to list</a>
+{% endblock %}

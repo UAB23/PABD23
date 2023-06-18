@@ -28,7 +28,7 @@ final class Version20230617125306 extends AbstractMigration
             password VARCHAR(255) NOT NULL, 
             UNIQUE INDEX UNIQ_58E507A4E7927C74 (email), 
             PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE blog (
+        $this->addSql('CREATE TABLE blog_zc (
             id INT AUTO_INCREMENT NOT NULL,
             title VARCHAR(255) NOT NULL,
             content TEXT NOT NULL,
@@ -38,12 +38,12 @@ final class Version20230617125306 extends AbstractMigration
             updated_at DATETIME NOT NULL,
             PRIMARY KEY (id),
             FOREIGN KEY (author_id) REFERENCES user_zc (id) ON DELETE CASCADE
-        ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB'); 
     }
 
     public function down(Schema $schema): void
     {
-        $this->addSql('DROP TABLE blog');
+        $this->addSql('DROP TABLE blog_zc');
         $this->addSql('DROP TABLE user_zc');
     }
 }

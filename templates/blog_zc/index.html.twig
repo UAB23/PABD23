@@ -1,0 +1,54 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogZCController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Users/cristianzabrian/Desktop/Stuff/PE/PABD23/src/Controller/BlogZCController.php'|file_link(0) }}">src/Controller/BlogZCController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Users/cristianzabrian/Desktop/Stuff/PE/PABD23/templates/blog_zc/index.html.twig'|file_link(0) }}">templates/blog_zc/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogZC List{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>BlogZC List</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Author</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for blog in blogs %}
+                    <tr>
+                        <td>{{ blog.title }}</td>
+                        <td>{{ blog.content }}</td>
+                        {# <td>{{ blog.author_id }}</td> #}
+                        <img src={{blog.img}} />
+                        <td>{{ blog.createdAt|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

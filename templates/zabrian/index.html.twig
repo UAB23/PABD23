@@ -59,32 +59,34 @@
     </style>
 {% endblock %}
 {% block body %}
+    {% for blog in blogs %}
     <div class="container">
         <div class="blog-content">
             <div class="b-col-1"> 
-                <img class="blog-picture" src="https://images.unsplash.com/photo-1686903430902-1fb1b2514a07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" />
+                <img class="blog-picture" src={{blog.img}} />
                 
             </div>
             <div class="b-col-2">
                 <div class="blog-tc">
-                    <h1 class="blog-title">Title</h1>
-                    <p class="blog-content">Content</p>
+                    <h1 class="blog-title">{{ blog.title }}</h1>
+                    <p class="blog-content">{{ blog.content }}</p>
                 </div>
                 <div class="author-footer">
-                    <div class="author-container">
+                    {# <div class="author-container">
                         <img class="author-avatar" src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" />
                         <h3 class="author-name">Mihai Eminescu</h3>
-                    </div>
+                    </div> #}
                     <div class="publish-date">
                         <svg width="2rem" height="2rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 10V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V10M20 10V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V10M20 10H4M8 3V7M16 3V7" stroke="#a8a8a8" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                         <span>
-                            12-23-34
+                            {{ blog.createdAt|date('Y-m-d H:i:s') }}
                         </span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}

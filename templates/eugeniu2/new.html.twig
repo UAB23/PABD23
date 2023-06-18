@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Eugeniu{% endblock %}
+
+{% block body %}
+    <h1>Create new Eugeniu</h1>
+
+    {{ include('eugeniu2/_form.html.twig') }}
+
+    <a href="{{ path('app_eugeniu2_index') }}">back to list</a>
+{% endblock %}

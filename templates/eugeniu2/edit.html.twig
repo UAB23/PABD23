@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Eugeniu{% endblock %}
+
+{% block body %}
+    <h1>Edit Eugeniu</h1>
+
+    {{ include('eugeniu2/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_eugeniu2_index') }}">back to list</a>
+
+    {{ include('eugeniu2/_delete_form.html.twig') }}
+{% endblock %}

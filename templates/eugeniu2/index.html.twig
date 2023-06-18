@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Eugeniu</title>
+    <link type = "text/css" rel="stylesheet" href="Eugeniu.css">
+</head>
+<body>
+    <h1>Eugeniu index</h1>
+    <div class="grid-container">
+        <img src="erou.png" width="600" height="600">
+        <div id = "text">
+            <p>Pagina mea<p>
+            <ul>
+                <li>Paze de date</li>
+                <li>Programare avansata</li>
+            </ul>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eugeniu in eugenius %}
+            <tr>
+                <td>{{ eugeniu.id }}</td>
+                <td>{{ eugeniu.name }}</td>
+                <td>{{ eugeniu.description }}</td>
+                <td>
+                    <a href="{{ path('app_eugeniu2_show', {'id': eugeniu.id}) }}">show</a>
+                    <a href="{{ path('app_eugeniu2_edit', {'id': eugeniu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_eugeniu2_new') }}">Create new</a>
+</body>
+</html>

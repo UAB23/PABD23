@@ -15,4 +15,12 @@ class ZabrianController extends AbstractController
             'controller_name' => 'ZabrianController',
         ]);
     }
+
+    #[Route('/profilezc', name: 'app_profilezc')]
+    public function profilezc(): Response
+    {
+        return $this->render('zabrian/profile.html.twig', [
+            'controller_name' => 'ZabrianController',
+        ]);
+    }
 }

@@ -1,0 +1,49 @@
+{# PaulRaduForm.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Create Data</h1>
+
+    <form method="post" action="{{ path('createDb') }}">
+        {{ form_row(form._token) }}
+
+        <div class="form-group">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.email) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.location) }}
+            {{ form_widget(form.location, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.location) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.bio) }}
+            {{ form_widget(form.bio, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.bio) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.aboutMe) }}
+            {{ form_widget(form.aboutMe, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.aboutMe) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.skills) }}
+            {{ form_widget(form.skills, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_errors(form.skills) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

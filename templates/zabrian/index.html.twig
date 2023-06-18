@@ -1,50 +1,3 @@
-{# {% extends 'base.html.twig' %}
-
-{% block title %}Hello ZabrianController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-     {% if app.user %}
-        <h1 class="mb-3">
-            Hello {{ app.user.userIdentifier }}!
-        </h1>
-    {% endif %}
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/cristianzabrian/Desktop/Stuff/PE/PABD23/src/Controller/ZabrianController.php'|file_link(0) }}">src/Controller/ZabrianController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/cristianzabrian/Desktop/Stuff/PE/PABD23/templates/zabrian/index.html.twig'|file_link(0) }}">templates/zabrian/index.html.twig</a></code></li>
-    </ul>
-    {% if app.user %}
-    <a
-    class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-     href="/logoutzc"
-    >
-    Logout  
-    </a>
-    {% else %}
-    <a
-    class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-    href="/loginzc"
-    >
-    Login
-    </a>
-    <p>or</p>
-    <a
-    class="inline-block text-gray-300 no-underline hover:text-gray-200 hover:text-underline py-2 px-4"
-    href="/registerzc"
-    >
-    Register
-    </a>
-    {% endif %}
-</div>
-{% endblock %} #}
-
 {% extends 'zabrian/base.html.twig' %}
 
 {% block title %}Cristian Zabrian{% endblock %}
@@ -72,10 +25,10 @@
                     <p class="blog-content">{{ blog.content }}</p>
                 </div>
                 <div class="author-footer">
-                    {# <div class="author-container">
+                    <div class="author-container">
                         <img class="author-avatar" src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" />
                         <h3 class="author-name">Mihai Eminescu</h3>
-                    </div> #}
+                    </div>
                     <div class="publish-date">
                         <svg width="2rem" height="2rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M20 10V7C20 5.89543 19.1046 5 18 5H6C4.89543 5 4 5.89543 4 7V10M20 10V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V10M20 10H4M8 3V7M16 3V7" stroke="#a8a8a8" stroke-width="2" stroke-linecap="round"/>

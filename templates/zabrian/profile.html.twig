@@ -1,38 +1,3 @@
-{# {% extends 'zabrian/base.html.twig' %}
-
-{% block title %}Cristian Zabrian{% endblock %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <style>
-       #profile-tab {
-        text-decoration: none;
-        border-bottom: 2px solid #007bff;
-       } 
-    </style>
-{% endblock %}
-{% block body %}
-    <div class="container">
-       <h1>User Profile</h1>
-    
-       <div>
-           <h2>Profile Picture</h2>
-               {{ form_start(profilePictureForm, {'action': path('profile_picture')}) }}
-               {{ form_row(profilePictureForm.profilePicture) }}
-               <input type="submit" value="Upload">
-               {{ form_end(profilePictureForm) }}
-       </div>
-
-<div>
-    <h2>Username</h2>
-    {{ form_start(usernameForm, {'action': path('profile_username')}) }}
-        {{ form_row(usernameForm.newUsername) }}
-        <input type="submit" value="Update">
-    {{ form_end(usernameForm) }}
-</div>
-    
-    </div>
-{% endblock %} #}
 {% extends 'zabrian/base.html.twig' %}
 
 {% block title %}Cristian Zabrian{% endblock %}
@@ -49,23 +14,18 @@
 
 {% block body %}
     <div class="container">
-       <h1>User Profile</h1>
-
-        <div>
-            <h2>Profile Picture</h2>
-            {# {{ form_start(profilePictureForm, { 'action': path('profilezc_update') }) }}
-                {{ form_row(profilePictureForm.profilePicture) }}
-                <input type="submit" value="Upload">
-            {{ form_end(profilePictureForm) }} #}
+    {% if app.user %}
+        <div class="blog-content">
+            <div class="b-col-1"> 
+                <img class="blog-picture" src={{app.user.picture}} />
+            </div>
+            <div class="b-col-2">
+                <div class="blog-tc">
+                    <h1 class="blog-title">{{ app.user.userIdentifier}}</h1>
+                    <p class="blog-content">{{ app.user.bio }}</p>
+                </div>
+            </div>
         </div>
-
-        <div>
-            <h2>Username</h2>
-            {# <p>Current Username: {{ user.username }}</p>
-            {{ form_start(usernameForm, { 'action': path('profilezc_update') }) }}
-                {{ form_row(usernameForm.newUsername) }}
-                <input type="submit" value="Update">
-            {{ form_end(usernameForm) }} #}
-        </div>
+        {% endif %}
     </div>
 {% endblock %}

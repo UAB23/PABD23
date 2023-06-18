@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BlogComment index{% endblock %}
+
+{% block body %}
+    <h1>BlogComment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for blog_comment in blog_comments %}
+            <tr>
+                <td>{{ blog_comment.id }}</td>
+                <td>{{ blog_comment.content }}</td>
+                <td>
+                    <a href="{{ path('app_blog_comment_show', {'id': blog_comment.id}) }}">show</a>
+                    <a href="{{ path('app_blog_comment_edit', {'id': blog_comment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_blog_comment_new') }}">Create new</a>
+{% endblock %}

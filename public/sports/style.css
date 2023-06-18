@@ -1,0 +1,115 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    color: #666;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #999;
+    margin-top: 20px;
+}
+
+p {
+    line-height: 1.5;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+a {
+    color: #007bff;
+}
+
+/* Specific Styles */
+h1,
+h2,
+h3 {
+    text-decoration: underline;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+p + ul {
+    margin-top: -10px;
+}
+
+/* Styling the GitHub link */
+p a {
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: none;
+}
+
+/* Add your own custom styles below this line */
+h2 + table {
+    margin-bottom: 20px;
+}
+
+h3 + p {
+    margin-top: 10px;
+}
+
+h3 + p + ul {
+    margin-top: 10px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+ul li::before {
+    content: "\2022";
+    color: #007bff;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: .5em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead, tr, th {
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* Add your own custom styles below this line */
+.center {
+    text-align: center;
+}
+
+.wide-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}

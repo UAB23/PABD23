@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mihai Bolojan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Mihai Bolojan</h1>
+    <p>Hi, I'm Mihai Bolojan! I'm a sports enthusiast and here are some sports I enjoy:</p>
+    <ul>
+        <li>Basketball</li>
+        <li>American Football</li>
+        <li>Hockey</li>
+        <li>Baseball</li>
+        <li>Formula 1</li>
+    </ul>
+    <h2>Legends in Sports</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Basketball</th>
+                <th>American_football</th>
+                <th>Hockey</th>
+                <th>Baseball</th>
+                <th>Formula1</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sport in sports %}
+            <tr>
+                <td>{{ sport.id }}</td>
+                <td>{{ sport.basketball }}</td>
+                <td>{{ sport.americanFootball }}</td>
+                <td>{{ sport.hockey }}</td>
+                <td>{{ sport.baseball }}</td>
+                <td>{{ sport.formula1 }}</td>
+                <td>
+                    <a href="{{ path('app_sports_show', {'id': sport.id}) }}">show</a>
+                    <a href="{{ path('app_sports_edit', {'id': sport.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>About Sports</h3>
+    <p>Sports play an important role in promoting physical fitness and mental well-being. They provide a platform for individuals to showcase their skills, compete with others, and foster teamwork. Participating in sports can help improve coordination, endurance, and overall health. It also teaches valuable life lessons such as discipline, perseverance, and sportsmanship.</p>
+
+    <h3 class="center">Sports Image</h3>
+    <div class="center">
+    <img src="sports.jpg" alt="Sports" class="wide-image" />
+    </div>
+
+
+    <h3>Additional Sports</h3>
+    <ul>
+        <li>Tennis</li>
+        <li>Soccer</li>
+        <li>Golf</li>
+    </ul>
+
+    <a href="{{ path('app_sports_new') }}">Create new</a>
+</body>
+</html>

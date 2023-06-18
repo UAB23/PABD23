@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Country index</h1>
+    <img src="ieu.jpeg" width="600" height="600">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>DateVisited</th>
+                <th>Comments</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for country in countries %}
+            <tr>
+                <td>{{ country.id }}</td>
+                <td>{{ country.Name }}</td>
+                <td>{{ country.DateVisited ? country.DateVisited|date('Y-m-d') : '' }}</td>
+                <td>{{ country.Comments }}</td>
+                <td>
+                    <a href="{{ path('app_country_show', {'id': country.id}) }}">show</a>
+                    <a href="{{ path('app_country_edit', {'id': country.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_country_new') }}">Create new</a>
+</body>
+</html>

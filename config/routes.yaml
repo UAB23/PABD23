@@ -21,9 +21,6 @@ ZabrianCristian:
   path: /ZabrianCristian
   controller: App\Controller\ZabrianController::index
 
-    path: /MariaNeculaStan
-    controller: App\Controller\MariaNeculaStanController::index
-
 PaulRadu:
-    path: /create
-    controller: App\Controller\PaulRaduController::create
+  path: /create
+  controller: App\Controller\PaulRaduController::create

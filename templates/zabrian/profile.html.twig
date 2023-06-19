@@ -1,0 +1,31 @@
+{% extends 'zabrian/base.html.twig' %}
+
+{% block title %}Cristian Zabrian{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+       #profile-tab {
+        text-decoration: none;
+        border-bottom: 2px solid #007bff;
+       } 
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+    {% if app.user %}
+        <div class="blog-content">
+            <div class="b-col-1"> 
+                <img class="blog-picture" src={{app.user.picture}} />
+            </div>
+            <div class="b-col-2">
+                <div class="blog-tc">
+                    <h1 class="blog-title">{{ app.user.userIdentifier}}</h1>
+                    <p class="blog-content">{{ app.user.bio }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

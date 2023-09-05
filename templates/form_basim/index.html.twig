@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Form - Basim Hammad</title>
+    <link type = "text/css" rel="stylesheet" href="/Form/Basim/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class = "grid-container">
+      <div id = "categories">
+        <ol>
+          {% for category in categories %}
+            <li class="category-item">{{category.name}}</li>
+              <ul>
+                {% for subCategory in subCategories %}
+                  {% if category.id == subCategory.id %}
+                    <li><a href="javascript:getPost({{subCategory.id}})">{{subCategory.name}}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+          {% endfor %}
+        </ol>
+      </div>
+
+      <div id = "posts">
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function getPost(id) {
+      $.ajax('{{ path('get_posts') }}', {
+                     data: {
+                             "id": id,
+                     },
+                     success: function(posts) {
+                     document.querySelector('#posts').innerHTML = '';
+                     $.each(posts , function(index, item) {
+                         document.querySelector('#posts').innerHTML += '<span class = "post">' + item.text + '</span>';
+                         var formattedDate = new Date(item.data.date);
+                         document.querySelector('#posts').innerHTML += '<span class = "data">' + formattedDate.getDate() + '/' + (formattedDate.getMonth()+1) + '/' + formattedDate.getFullYear() + '</span>';
+                     });
+                     },
+                     error: function() {
+                     }
+      });
+    }
+  </script>
+</html>

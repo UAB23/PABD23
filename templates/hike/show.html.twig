@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+ 
+{% block title %}Hikes{% endblock %}
+ 
+{% block body %}
+    <div class="container">
+        <h2 class="text-center mt-5 mb-3">Show Hikes</h2>
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-info float-right" href="{{ path('app_hike_index') }}"> 
+                    View All Hikes
+                </a>
+            </div>
+            <div class="card-body">
+                <b class="text-muted">Name:</b>
+                <p>{{ hike.locatie }}</p>
+                <b class="text-muted">Description:</b>
+                <p>{{ hike.descriere }}</p>
+                <b class="text-muted">Date Created:</b>
+                <p>{{ hike.createdAt ? hike.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+                <b class="text-muted">Date Updated:</b>
+                <p>{{ hike.updatedAt ? hike.updatedAt|date('Y-m-d H:i:s') : '' }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

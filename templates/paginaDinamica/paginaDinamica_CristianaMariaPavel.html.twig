@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Cristiana-Maria Pavel</title>
+	   <link type = "text/css" rel="stylesheet" href="css/cristiana-maria-pavel/paginaPersonalaDinamica.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+	<div class="grid-container">
+		<img src="poza.jpg" width="300" height="300">
+		<div id = "text">
+    {% block Description %}
+      <textarea id="descriere" name="descriere" rows="4" cols="100">
+        {{user.descriere}}
+      </textarea>
+    {% endblock %}
+			<ul>
+			  <li>Symfony</li>
+			  <li>GitHub</li>
+			  <li>Composer</li>
+			</ul>
+		</div>
+    <input type="text" id="user" name="user" placeholder = "Username" required>
+    <input type="text" id="parola" name="parola" placeholder = "Parola" required>
+    <button class = "btn">Modifică descriere</button>
+    <p id="mesaj"></p>
+	</div>
+  </body>
+
+  <script>
+  $(document).on('click','button',function(){
+        document.getElementById("mesaj").innerHTML = "";
+       $.ajax('{{ path('find_user_username') }}', {
+                      data: {
+                              // you can pass some parameters to the controller here
+                      },
+                      success: function(data) {
+                              var usernameInput = $("#user").val();
+                              if (usernameInput != data) {
+                                console.log("Username-ul nu corespunde!");
+                                document.getElementById("mesaj").innerHTML = "Username-ul nu corespunde!";
+                              } else {
+                                $.ajax('{{ path('find_user_parola') }}', {
+                                               data: {
+                                                       // you can pass some parameters to the controller here
+                                               },
+                                               success: function(data) {
+                                                       var parolaInput = $("#parola").val();
+                                                       if (parolaInput != data) {
+                                                         console.log("Parola nu corespunde!");
+                                                         document.getElementById("mesaj").innerHTML = "Parola nu corespunde!";
+                                                       } else {
+                                                           $.ajax('{{ path('update_descriere') }}', {
+                                                                          data: {
+                                                                                  "descriere": $("textarea").val()
+                                                                          },
+                                                                          success: function(data) {
+                                                                                  console.log(data);
+                                                                                  document.getElementById("mesaj").innerHTML = "Descriere actualizată cu succes!";
+                                                                          },
+                                                                          error: function() {
+                                                                                  document.getElementById("mesaj").innerHTML = "Descriere nu a putut fi actualizată!";
+                                                                          }
+                                                                      });
+                                                       }
+                                               },
+                                               error: function() {
+                                                       console.log("Eroare!");
+                                               }
+                                           });
+                              }
+                      },
+                      error: function() {
+                              console.log("Eroare!");
+                      }
+                  });
+
+
+      return false; // this stops normal button behaviour from executing;
+
+  });
+  </script>
+</html>

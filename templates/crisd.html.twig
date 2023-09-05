@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="crisd.css">
+<link href="{{ asset('css/crisd.css') }}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+<div class="row">
+    <div >
+        <img src="{{ asset('ADO.jpg') }}"/>
+    </div>
+    <div >
+      <h1>This is my beautiful dog Ador.</h1>
+      <p>He works as a mountain rescue dog.</p>
+      <p>But in his free time he likes:</p>
+      <ul>
+          <li>Running after sticks.</li>
+          <li>Playing with medium rocks.</li>
+          <li>Eating everything his human eats.</li>
+      </ul>
+    </div>
+</div>
+<div class="row">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-outline-primary" href="{{ path('app_hike_new') }}"> 
+                    Create New Hike 
+                </a>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Locatie</th>
+                        <th>Descriere</th>
+                        <th>Date Created</th>
+                        <th>Date Updated</th>
+                        <th width="240px">Action</th>
+                    </tr>
+                    {% for hike in hikes %}
+                    <tr>
+                        <td>{{ hike.locatie }}</td>
+                        <td>{{ hike.descriere }}</td>
+                        <td>{{ hike.createdAt ? hike.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ hike.updatedAt ? hike.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <form method="post" action="{{ path('app_hike_delete', {'id': hike.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                <a
+                                    class="btn btn-outline-info"
+                                    href="{{ path('app_hike_show', {'id': hike.id}) }}">
+                                    Show
+                                </a>
+                                <a
+                                    class="btn btn-outline-success"
+                                    href="{{ path('app_hike_edit', {'id': hike.id}) }}">
+                                    Edit
+                                </a>
+ 
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ hike.id) }}">
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

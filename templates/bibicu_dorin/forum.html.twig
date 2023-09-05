@@ -1,0 +1,216 @@
+{% extends "/bibicu_dorin/base.html.twig" %}
+
+
+{% block body %}
+
+
+<div class="w-4/5 m-auto pt-20">
+    <h1 class="text-6xl text-center pb-12">
+        Forum
+    </h1>
+
+        {% set categorie = 1 %}
+
+        <form action="/BibicuDorin/forum">
+            <label for="cars">Alege o categorie de disctuții:</label>
+            <select id="categorie" name="categorie">
+              {% if app.user %}
+              {% if app.user.roles[0] =='ROLE_ADMIN'%}
+                    {% for act in activitatiS %}
+
+                    <option value="{{act.id}}">{{act.name}}  </option>
+                    {% endfor %}
+               {% else %}
+                    {% for act in activitatiS %}
+                     {% if (act.getApproved()) == 1 %}  
+                    <option value="{{act.id}}">{{act.name}}  </option>
+                    {% endif %}
+                    {% endfor %}
+              {% endif %}
+              {% else %}
+                    {% for act in activitatiS %}
+                     {% if (act.getApproved()) == 1 %}  
+                    <option value="{{act.id}}">{{act.name}}  </option>
+                    {% endif %}
+                    {% endfor %}
+              {% endif %}
+            </select> 
+
+            <input type="submit" value="Deschide categoria" class="uppercase border border-gray-500 text-gray-600 text-lg py-1 px-1 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+        </form>
+        
+        {% set categorie = ( app.request.get("categorie")) %}
+
+{# Categorie= {{ app.request.get("categorie") }} #}
+
+<br><br>
+ <form action="/BibicuDorin/forum">
+        <input type="hidden" id="custId" name="categorie" value={{categorie}}>
+        <label for="cars">Alege o subcategorie de disctuții:</label>
+        <select id="subcategorie" name="subcategorie">
+         {% if app.user %}
+         {% if app.user.roles[0] =='ROLE_ADMIN'%}
+                    {% for act1 in activitatiS1 %}  
+                    {% if (act1. getIdCateg()) == (categorie) %}
+                    <option value="{{act1.id}}">{{act1.name}}  </option>
+                    {% endif %}
+                    {% endfor %}
+         {% else %}
+                    {% for act1 in activitatiS1 %}  
+                    {% if (act1. getIdCateg()) == (categorie) %}
+                    {% if (act1.getApproved()) == 1 %} 
+                    <option value="{{act1.id}}">{{act1.name}}  </option>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+        {% endif %}
+        {% else %}
+                    {% for act1 in activitatiS1 %}  
+                    {% if (act1. getIdCateg()) == (categorie) %}
+                    {% if (act1.getApproved()) == 1 %} 
+                    <option value="{{act1.id}}">{{act1.name}}  </option>
+                    {% endif %}
+                     {% endif %}
+                    {% endfor %}
+        {% endif %}
+        </select> 
+        <input type="submit" value="Deschide subcategoria"  class="uppercase border border-gray-500 text-gray-600 text-lg py-1 px-1 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+</form>
+
+{% set subcategorie = 0 %}
+{# afiseaza mesajul categorie=. Nu def variabila subcategorie #}
+{# subcategorie= {{ app.request.get("subcategorie") }} #}
+{% set subcategorie = ( app.request.get("subcategorie")) %}
+
+<br><br>
+ {# determin numeCategorie #}
+ {% set numeCategorie = "" %}
+                            {% for act in activitatiS %}
+                                {% if (act.getId()) == (categorie)  %} 
+                                {% set numeCategorie = (act.getName()) %}
+                                {% endif %}
+                            {% endfor %}
+
+{# determin numeSubcategorie #}
+ {% set numeSubcategorie = "" %}
+                            {% for act1 in activitatiS1 %}
+                                {% if (act1.getId()) == (subcategorie)  %} 
+                                {% set numeSubcategorie = (act1.getName()) %}
+                                {% endif %}
+                            {% endfor %}
+
+Postari in categoria <b>{{numeCategorie}}</b>, subcategoria<b> {{numeSubcategorie}}</b>:
+<br><br>
+<table class="stil">
+    <tr>
+        <th>Email utilizator</th>
+        <th>Postare</th>
+        <th>Data postare</th>
+        {% if app.user %}
+        {% if app.user.roles[0] =='ROLE_ADMIN' %}
+        <th>Aprobat</th>
+        <th>Aproba</th>
+        <th>Respinge</th>
+        {% endif %}
+        {% endif %}
+    </tr>
+
+    {% for act2 in activitatiS2 %}
+    {% if (act2.getIdSubcateg()) == (subcategorie) %}
+    
+    {# approved=1 aprobat, 0=asteapta aprobarea , 2=reject#}  
+
+      {% if app.user %}
+
+          {% if app.user.roles[0] =='ROLE_ADMIN' %}
+               <tr>
+                        <td>
+                            {# determin email utilizator #}
+                            {% for act3 in activitatiS3 %}
+                                {% if (act3.getId()) == (act2.getIdUser())  %} 
+                                {{act3.email}}
+                                {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td> {{act2.text}}</td>
+                        <td>{{act2.timp|date('d-m-Y H:i:s')}}</td>
+                        <td><input type=text value={{act2.approved}} disabled style="text-align: center;"></td>
+                        <!-- <td><input type=submit value=Modifica style="text-align: center;"></td> -->
+                        <td> <a href="/BibicuDorin/post/edit/{{act2.id}}/1?categorie={{categorie}}&subcategorie={{subcategorie}}"> Aproba </a></td>
+                        <td> <a href="/BibicuDorin/post/edit/{{act2.id}}/2?categorie={{categorie}}&subcategorie={{subcategorie}}"> Respinge </a></td>
+                </tr>   
+                    {% else %}
+                        {% if (act2.getApproved()) == 1 %}  
+                            <tr>
+                                <td>
+                                    {# determin email utilizator #}
+                                    {% for act3 in activitatiS3 %}
+                                        {% if (act3.getId()) == (act2.getIdUser())  %} 
+                                        {{act3.email}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td> {{act2.text}}</td>
+                                <td>{{act2.timp|date('d-m-Y H:i:s')}}</td>
+                            </tr>
+                        {% endif %}
+
+           {% endif %}
+
+           {% else %}
+                        {% if (act2.getApproved()) == 1 %}  
+                            <tr>
+                                <td>
+                                    {# determin email utilizator #}
+                                    {% for act3 in activitatiS3 %}
+                                        {% if (act3.getId()) == (act2.getIdUser())  %} 
+                                        {{act3.email}}
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td> {{act2.text}}</td>
+                                <td>{{act2.timp|date('d-m-Y H:i:s')}}</td>
+                            </tr>
+                        {% endif %}
+        {% endif %}
+    
+        
+      {% endif %}
+    {% endfor %}
+</table>
+
+<br><br>
+    {% if app.user %}
+    {% if app.user.roles[0] =='ROLE_ADMIN' or app.user.roles[0] =='ROLE_USER' %}
+        {% set userId = ( app.user.getId()) %}
+        <a href="/BibicuDorin/scriePost/{{categorie}}/{{subcategorie}}/{{userId}}" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+            Scrie în forum
+        </a> &nbsp
+
+
+
+       <a href="/BibicuDorin/adaugaCategorie/{{categorie}}/{{subcategorie}}/{{userId}}" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+            Propune o categorie
+        </a> &nbsp
+
+    
+        <a href="/BibicuDorin/adaugaSubcategorie/{{categorie}}/1/{{userId}}" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+            Propune o subcategorie
+        </a>
+
+
+         {% if app.user.roles[0] =='ROLE_ADMIN' %}
+            <br><br><br><br>
+           <a href="/BibicuDorin/afiseazaCategorie/{{userId}}" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+                Modifica o categorie
+            </a> &nbsp
+
+            <a href="/BibicuDorin/afiseazaSubcategorie?userId={{userId}}" class="uppercase border border-gray-500 text-gray-600 text-lg py-4 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+                Modifica o subcategorie
+            </a>
+         {% endif %}
+    {% endif %}
+    {% endif %}
+
+</div>
+{% endblock %}
